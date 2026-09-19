@@ -1,0 +1,27 @@
+# Student records and generated manifests: keep out of Git history.
+private-data/student-roster.csv
+private-data/student-calendars.json
+private-data/student-index.json
+data/class-calendars.json
+
+# Build output
+_site/
+site/
+dist/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# OS/editor files
+.DS_Store
+Thumbs.db
