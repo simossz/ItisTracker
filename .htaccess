@@ -1,0 +1,6 @@
+RewriteEngine On
+
+# Keep every page and asset on the secure origin.
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^(www\.)?simocode\.xyz$ [NC]
+RewriteRule ^ https://itis.simocode.xyz%{REQUEST_URI} [R=301,L,NE]
