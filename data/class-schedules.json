@@ -1,0 +1,646 @@
+{
+  "source_page": "https://dati.itis.pr.it/orariodiurno/index-original.html?nocache=1791385312311",
+  "source_updated": "03/10/2026",
+  "note": "Gli orari sono immagini pubblicate dal sito; non sono stati trascritti in campi strutturati.",
+  "classes": [
+    {
+      "name": "1A",
+      "resource_code": "c0001392",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001392p00001s3fffffffffffffff_1a_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/1A.png",
+      "bytes": 30078
+    },
+    {
+      "name": "1B",
+      "resource_code": "c0001393",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001393p00001s3fffffffffffffff_1b_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/1B.png",
+      "bytes": 29560
+    },
+    {
+      "name": "1C",
+      "resource_code": "c0001394",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001394p00001s3fffffffffffffff_1c_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/1C.png",
+      "bytes": 29224
+    },
+    {
+      "name": "1D",
+      "resource_code": "c0001395",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001395p00001s3fffffffffffffff_1d_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/1D.png",
+      "bytes": 29101
+    },
+    {
+      "name": "1E",
+      "resource_code": "c0001396",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001396p00001s3fffffffffffffff_1e_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/1E.png",
+      "bytes": 27731
+    },
+    {
+      "name": "1F",
+      "resource_code": "c0001397",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001397p00001s3fffffffffffffff_1f_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/1F.png",
+      "bytes": 29424
+    },
+    {
+      "name": "1G",
+      "resource_code": "c0001398",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001398p00001s3fffffffffffffff_1g_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/1G.png",
+      "bytes": 28906
+    },
+    {
+      "name": "1H",
+      "resource_code": "c0001399",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001399p00001s3fffffffffffffff_1h_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/1H.png",
+      "bytes": 29764
+    },
+    {
+      "name": "1I",
+      "resource_code": "c0001400",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001400p00001s3fffffffffffffff_1i_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/1I.png",
+      "bytes": 29054
+    },
+    {
+      "name": "1L",
+      "resource_code": "c0001401",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001401p00001s3fffffffffffffff_1l_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/1L.png",
+      "bytes": 28988
+    },
+    {
+      "name": "1M",
+      "resource_code": "c0001402",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001402p00001s3fffffffffffffff_1m_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/1M.png",
+      "bytes": 28888
+    },
+    {
+      "name": "1N",
+      "resource_code": "c0001403",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001403p00001s3fffffffffffffff_1n_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/1N.png",
+      "bytes": 28538
+    },
+    {
+      "name": "1O",
+      "resource_code": "c0001404",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001404p00001s3fffffffffffffff_1o_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/1O.png",
+      "bytes": 29036
+    },
+    {
+      "name": "1P",
+      "resource_code": "c0001405",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001405p00001s3fffffffffffffff_1p_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/1P.png",
+      "bytes": 29926
+    },
+    {
+      "name": "1Q",
+      "resource_code": "c0001406",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001406p00001s3fffffffffffffff_1q_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/1Q.png",
+      "bytes": 29656
+    },
+    {
+      "name": "1R",
+      "resource_code": "c0001407",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001407p00001s3fffffffffffffff_1r_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/1R.png",
+      "bytes": 28218
+    },
+    {
+      "name": "2A",
+      "resource_code": "c0001336",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001336p00001s3fffffffffffffff_2a_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/2A.png",
+      "bytes": 28189
+    },
+    {
+      "name": "2B",
+      "resource_code": "c0001337",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001337p00001s3fffffffffffffff_2b_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/2B.png",
+      "bytes": 28314
+    },
+    {
+      "name": "2C",
+      "resource_code": "c0001338",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001338p00001s3fffffffffffffff_2c_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/2C.png",
+      "bytes": 28097
+    },
+    {
+      "name": "2D",
+      "resource_code": "c0001339",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001339p00001s3fffffffffffffff_2d_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/2D.png",
+      "bytes": 28416
+    },
+    {
+      "name": "2E",
+      "resource_code": "c0001348",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001348p00001s3fffffffffffffff_2e_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/2E.png",
+      "bytes": 28104
+    },
+    {
+      "name": "2F",
+      "resource_code": "c0001347",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001347p00001s3fffffffffffffff_2f_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/2F.png",
+      "bytes": 27904
+    },
+    {
+      "name": "2G",
+      "resource_code": "c0001340",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001340p00001s3fffffffffffffff_2g_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/2G.png",
+      "bytes": 29117
+    },
+    {
+      "name": "2H",
+      "resource_code": "c0001341",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001341p00001s3fffffffffffffff_2h_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/2H.png",
+      "bytes": 27609
+    },
+    {
+      "name": "2I",
+      "resource_code": "c0001342",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001342p00001s3fffffffffffffff_2i_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/2I.png",
+      "bytes": 29466
+    },
+    {
+      "name": "2L",
+      "resource_code": "c0001343",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001343p00001s3fffffffffffffff_2l_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/2L.png",
+      "bytes": 27161
+    },
+    {
+      "name": "2M",
+      "resource_code": "c0001344",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001344p00001s3fffffffffffffff_2m_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/2M.png",
+      "bytes": 28484
+    },
+    {
+      "name": "2N",
+      "resource_code": "c0001345",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001345p00001s3fffffffffffffff_2n_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/2N.png",
+      "bytes": 28357
+    },
+    {
+      "name": "2Q",
+      "resource_code": "c0001346",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001346p00001s3fffffffffffffff_2q_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/2Q.png",
+      "bytes": 28211
+    },
+    {
+      "name": "3A BS",
+      "resource_code": "c0001382",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001382p00001s3fffffffffffffff_3a_bs_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/3A%20BS.png",
+      "bytes": 29726
+    },
+    {
+      "name": "3A EL/BA",
+      "resource_code": "c0001381",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001381p00001s3fffffffffffffff_3a_elba_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/3A%20EL%2FBA.png",
+      "bytes": 39107
+    },
+    {
+      "name": "3A INF",
+      "resource_code": "c0001372",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001372p00001s3fffffffffffffff_3a_inf_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/3A%20INF.png",
+      "bytes": 30209
+    },
+    {
+      "name": "3A LOG",
+      "resource_code": "c0001354",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001354p00001s3fffffffffffffff_3a_log_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/3A%20LOG.png",
+      "bytes": 30380
+    },
+    {
+      "name": "3A MEC",
+      "resource_code": "c0001363",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001363p00001s3fffffffffffffff_3a_mec_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/3A%20MEC.png",
+      "bytes": 29307
+    },
+    {
+      "name": "3B AU",
+      "resource_code": "c0001349",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001349p00001s3fffffffffffffff_3b_au_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/3B%20AU.png",
+      "bytes": 27333
+    },
+    {
+      "name": "3B BS",
+      "resource_code": "c0001383",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001383p00001s3fffffffffffffff_3b_bs_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/3B%20BS.png",
+      "bytes": 29511
+    },
+    {
+      "name": "3B INF",
+      "resource_code": "c0001373",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001373p00001s3fffffffffffffff_3b_inf_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/3B%20INF.png",
+      "bytes": 30834
+    },
+    {
+      "name": "3B LOG",
+      "resource_code": "c0001355",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001355p00001s3fffffffffffffff_3b_log_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/3B%20LOG.png",
+      "bytes": 30580
+    },
+    {
+      "name": "3B MEC",
+      "resource_code": "c0001364",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001364p00001s3fffffffffffffff_3b_mec_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/3B%20MEC.png",
+      "bytes": 30268
+    },
+    {
+      "name": "3C AU",
+      "resource_code": "c0001350",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001350p00001s3fffffffffffffff_3c_au_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/3C%20AU.png",
+      "bytes": 28434
+    },
+    {
+      "name": "3C LOG/INF",
+      "resource_code": "c0001374",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001374p00001s3fffffffffffffff_3c_loginf_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/3C%20LOG%2FINF.png",
+      "bytes": 39690
+    },
+    {
+      "name": "3C MEC",
+      "resource_code": "c0001365",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001365p00001s3fffffffffffffff_3c_mec_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/3C%20MEC.png",
+      "bytes": 31880
+    },
+    {
+      "name": "4A BS",
+      "resource_code": "c0001385",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001385p00001s3fffffffffffffff_4a_bs_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/4A%20BS.png",
+      "bytes": 28800
+    },
+    {
+      "name": "4A EL/BA",
+      "resource_code": "c0001384",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001384p00001s3fffffffffffffff_4a_elba_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/4A%20EL%2FBA.png",
+      "bytes": 38201
+    },
+    {
+      "name": "4A INF",
+      "resource_code": "c0001375",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001375p00001s3fffffffffffffff_4a_inf_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/4A%20INF.png",
+      "bytes": 31335
+    },
+    {
+      "name": "4A LOG",
+      "resource_code": "c0001356",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001356p00001s3fffffffffffffff_4a_log_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/4A%20LOG.png",
+      "bytes": 28952
+    },
+    {
+      "name": "4A MEC",
+      "resource_code": "c0001366",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001366p00001s3fffffffffffffff_4a_mec_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/4A%20MEC.png",
+      "bytes": 30292
+    },
+    {
+      "name": "4B AU",
+      "resource_code": "c0001351",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001351p00001s3fffffffffffffff_4b_au_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/4B%20AU.png",
+      "bytes": 28624
+    },
+    {
+      "name": "4B BS",
+      "resource_code": "c0001386",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001386p00001s3fffffffffffffff_4b_bs_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/4B%20BS.png",
+      "bytes": 29053
+    },
+    {
+      "name": "4B INF",
+      "resource_code": "c0001376",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001376p00001s3fffffffffffffff_4b_inf_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/4B%20INF.png",
+      "bytes": 30314
+    },
+    {
+      "name": "4B LOG",
+      "resource_code": "c0001357",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001357p00001s3fffffffffffffff_4b_log_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/4B%20LOG.png",
+      "bytes": 30188
+    },
+    {
+      "name": "4B MEC",
+      "resource_code": "c0001367",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001367p00001s3fffffffffffffff_4b_mec_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/4B%20MEC.png",
+      "bytes": 30059
+    },
+    {
+      "name": "4C AU",
+      "resource_code": "c0001352",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001352p00001s3fffffffffffffff_4c_au_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/4C%20AU.png",
+      "bytes": 29031
+    },
+    {
+      "name": "4C INF",
+      "resource_code": "c0001377",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001377p00001s3fffffffffffffff_4c_inf_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/4C%20INF.png",
+      "bytes": 31195
+    },
+    {
+      "name": "4C LOG",
+      "resource_code": "c0001358",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001358p00001s3fffffffffffffff_4c_log_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/4C%20LOG.png",
+      "bytes": 30183
+    },
+    {
+      "name": "4C MEC",
+      "resource_code": "c0001368",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001368p00001s3fffffffffffffff_4c_mec_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/4C%20MEC.png",
+      "bytes": 30475
+    },
+    {
+      "name": "5A BS",
+      "resource_code": "c0001388",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001388p00001s3fffffffffffffff_5a_bs_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/5A%20BS.png",
+      "bytes": 29623
+    },
+    {
+      "name": "5A EL/BA",
+      "resource_code": "c0001387",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001387p00001s3fffffffffffffff_5a_elba_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/5A%20EL%2FBA.png",
+      "bytes": 42536
+    },
+    {
+      "name": "5A INF",
+      "resource_code": "c0001378",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001378p00001s3fffffffffffffff_5a_inf_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/5A%20INF.png",
+      "bytes": 29671
+    },
+    {
+      "name": "5A LOG",
+      "resource_code": "c0001359",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001359p00001s3fffffffffffffff_5a_log_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/5A%20LOG.png",
+      "bytes": 30181
+    },
+    {
+      "name": "5A MEC",
+      "resource_code": "c0001369",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001369p00001s3fffffffffffffff_5a_mec_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/5A%20MEC.png",
+      "bytes": 29762
+    },
+    {
+      "name": "5B AU",
+      "resource_code": "c0001353",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001353p00001s3fffffffffffffff_5b_au_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/5B%20AU.png",
+      "bytes": 29465
+    },
+    {
+      "name": "5B BS",
+      "resource_code": "c0001389",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001389p00001s3fffffffffffffff_5b_bs_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/5B%20BS.png",
+      "bytes": 30512
+    },
+    {
+      "name": "5B INF",
+      "resource_code": "c0001379",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001379p00001s3fffffffffffffff_5b_inf_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/5B%20INF.png",
+      "bytes": 29993
+    },
+    {
+      "name": "5B LOG",
+      "resource_code": "c0001360",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001360p00001s3fffffffffffffff_5b_log_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/5B%20LOG.png",
+      "bytes": 29910
+    },
+    {
+      "name": "5B MEC",
+      "resource_code": "c0001370",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001370p00001s3fffffffffffffff_5b_mec_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/5B%20MEC.png",
+      "bytes": 29330
+    },
+    {
+      "name": "5C AU",
+      "resource_code": "c0001391",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001391p00001s3fffffffffffffff_5c_au_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/5C%20AU.png",
+      "bytes": 28513
+    },
+    {
+      "name": "5C INF",
+      "resource_code": "c0001380",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001380p00001s3fffffffffffffff_5c_inf_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/5C%20INF.png",
+      "bytes": 30767
+    },
+    {
+      "name": "5C LOG",
+      "resource_code": "c0001361",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001361p00001s3fffffffffffffff_5c_log_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/5C%20LOG.png",
+      "bytes": 30535
+    },
+    {
+      "name": "5C MEC",
+      "resource_code": "c0001371",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001371p00001s3fffffffffffffff_5c_mec_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/5C%20MEC.png",
+      "bytes": 30495
+    },
+    {
+      "name": "5D LOG",
+      "resource_code": "c0001362",
+      "period": "Anno Completo",
+      "source_url": "https://dati.itis.pr.it/orariodiurno/img/classi/edc0001362p00001s3fffffffffffffff_5d_log_ac.png",
+      "status": "done",
+      "local_file": "data/class-schedules/5D%20LOG.png",
+      "bytes": 30074
+    }
+  ]
+}
