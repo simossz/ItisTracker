@@ -720,7 +720,7 @@
       <div class="workspace">
         <aside class="side">
           <h2>Studente</h2>
-          <div class="field"><label for="student-search">Nome o cognome</label><input id="student-search" type="search" autocomplete="off" placeholder="Almeno 2 lettere" aria-controls="student-results" aria-describedby="student-search-help" disabled></div>
+          <div class="field"><label for="student-search">Nome o cognome</label><input id="student-search" type="search" autocomplete="off" aria-controls="student-results" aria-describedby="student-search-help" disabled></div>
           <span class="sr-only" id="student-search-help">Scrivi almeno due lettere. Usa le frecce per esplorare i risultati e Invio per selezionarne uno.</span>
         </aside>
         <div class="content">
@@ -735,7 +735,7 @@
       <div class="workspace">
         <aside class="side">
           <h2>Docente</h2>
-          <div class="field"><label for="teacher-search">Nome o cognome</label><input id="teacher-search" type="search" autocomplete="off" placeholder="Almeno 2 lettere" aria-controls="teacher-results" aria-describedby="teacher-search-help" disabled></div>
+          <div class="field"><label for="teacher-search">Nome o cognome</label><input id="teacher-search" type="search" autocomplete="off" aria-controls="teacher-results" aria-describedby="teacher-search-help" disabled></div>
           <span class="sr-only" id="teacher-search-help">Scrivi almeno due lettere. Usa le frecce per esplorare i risultati e Invio per selezionarne uno.</span>
         </aside>
         <div class="content">
@@ -954,7 +954,7 @@
           if (!response.ok) throw new Error();
           studentManifest = await response.json();
           $("#student-search").disabled = false;
-          $("#student-results").innerHTML = '<div class="empty">Inizia a digitare il nome.</div>';
+          $("#student-results").innerHTML = '';
         } catch (error) {
           $("#student-results").innerHTML = '<div class="empty">Dati non disponibili.</div>';
           $("#student-search-status").textContent = "Dati studenti non disponibili.";
@@ -967,7 +967,7 @@
     $("#student-search").addEventListener("input", event => {
       const query = normalize(event.target.value);
       if (query.length < 2) {
-        $("#student-results").innerHTML = '<div class="empty">Inserisci almeno due caratteri.</div>';
+        $("#student-results").innerHTML = '';
         $("#student-search-status").textContent = "Inserisci almeno due caratteri per cercare.";
         return;
       }
@@ -1020,7 +1020,7 @@
           if (!response.ok) throw new Error();
           teacherManifest = await response.json();
           $("#teacher-search").disabled = false;
-          $("#teacher-results").innerHTML = '<div class="empty">Inizia a digitare il nome.</div>';
+          $("#teacher-results").innerHTML = '';
         } catch (error) {
           $("#teacher-results").innerHTML = '<div class="empty">Dati non disponibili.</div>';
           $("#teacher-search-status").textContent = "Dati docenti non disponibili.";
@@ -1033,7 +1033,7 @@
     $("#teacher-search").addEventListener("input", event => {
       const query = normalize(event.target.value);
       if (query.length < 2) {
-        $("#teacher-results").innerHTML = '<div class="empty">Inserisci almeno due caratteri.</div>';
+        $("#teacher-results").innerHTML = '';
         $("#teacher-search-status").textContent = "Inserisci almeno due caratteri per cercare.";
         return;
       }
