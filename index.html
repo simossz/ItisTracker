@@ -720,8 +720,8 @@
       <div class="workspace">
         <aside class="side">
           <h2>Studente</h2>
-          <div class="field"><label for="student-search">Nome o cognome</label><input id="student-search" type="search" autocomplete="off" placeholder="Basta una lettera" aria-controls="student-results" aria-describedby="student-search-help" disabled></div>
-          <span class="sr-only" id="student-search-help">Scrivi una lettera del nome o del cognome. Usa le frecce per esplorare i risultati e Invio per selezionarne uno.</span>
+          <div class="field"><label for="student-search">Nome o cognome</label><input id="student-search" type="search" autocomplete="off" placeholder="Scrivi…" aria-controls="student-results" aria-describedby="student-search-help" disabled></div>
+          <span class="sr-only" id="student-search-help">Scrivi almeno due lettere. Usa le frecce per esplorare i risultati e Invio per selezionarne uno.</span>
         </aside>
         <div class="content">
           <div class="results" id="student-results" aria-label="Risultati studenti"><div class="empty">Caricamento studenti…</div></div>
@@ -735,8 +735,8 @@
       <div class="workspace">
         <aside class="side">
           <h2>Docente</h2>
-          <div class="field"><label for="teacher-search">Nome o cognome</label><input id="teacher-search" type="search" autocomplete="off" placeholder="Basta una lettera" aria-controls="teacher-results" aria-describedby="teacher-search-help" disabled></div>
-          <span class="sr-only" id="teacher-search-help">Scrivi una lettera del nome o del cognome. Usa le frecce per esplorare i risultati e Invio per selezionarne uno.</span>
+          <div class="field"><label for="teacher-search">Nome o cognome</label><input id="teacher-search" type="search" autocomplete="off" placeholder="Scrivi…" aria-controls="teacher-results" aria-describedby="teacher-search-help" disabled></div>
+          <span class="sr-only" id="teacher-search-help">Scrivi almeno due lettere. Usa le frecce per esplorare i risultati e Invio per selezionarne uno.</span>
         </aside>
         <div class="content">
           <div class="results" id="teacher-results" aria-label="Risultati docenti"><div class="empty">Caricamento docenti…</div></div>
@@ -954,7 +954,7 @@
           if (!response.ok) throw new Error();
           studentManifest = await response.json();
           $("#student-search").disabled = false;
-          $("#student-results").innerHTML = '<div class="empty">Scrivi una lettera per cercare uno studente.</div>';
+          $("#student-results").innerHTML = '<div class="empty">Scrivi almeno 2 lettere per cercare.</div>';
         } catch (error) {
           $("#student-results").innerHTML = '<div class="empty">Dati non disponibili.</div>';
           $("#student-search-status").textContent = "Dati studenti non disponibili.";
@@ -966,9 +966,9 @@
     }
     $("#student-search").addEventListener("input", event => {
       const query = normalize(event.target.value);
-      if (query.length < 1) {
-        $("#student-results").innerHTML = '<div class="empty">Scrivi una lettera per cercare uno studente.</div>';
-        $("#student-search-status").textContent = "Scrivi una lettera per cercare uno studente.";
+      if (query.length < 2) {
+        $("#student-results").innerHTML = '<div class="empty">Scrivi almeno 2 lettere per cercare.</div>';
+        $("#student-search-status").textContent = "Scrivi almeno due lettere per cercare.";
         return;
       }
       const allMatches = (studentManifest?.students || []).filter(student => normalize(student.name).includes(query));
@@ -1020,7 +1020,7 @@
           if (!response.ok) throw new Error();
           teacherManifest = await response.json();
           $("#teacher-search").disabled = false;
-          $("#teacher-results").innerHTML = '<div class="empty">Scrivi una lettera per cercare un docente.</div>';
+          $("#teacher-results").innerHTML = '<div class="empty">Scrivi almeno 2 lettere per cercare.</div>';
         } catch (error) {
           $("#teacher-results").innerHTML = '<div class="empty">Dati non disponibili.</div>';
           $("#teacher-search-status").textContent = "Dati docenti non disponibili.";
@@ -1032,9 +1032,9 @@
     }
     $("#teacher-search").addEventListener("input", event => {
       const query = normalize(event.target.value);
-      if (query.length < 1) {
-        $("#teacher-results").innerHTML = '<div class="empty">Scrivi una lettera per cercare un docente.</div>';
-        $("#teacher-search-status").textContent = "Scrivi una lettera per cercare un docente.";
+      if (query.length < 2) {
+        $("#teacher-results").innerHTML = '<div class="empty">Scrivi almeno 2 lettere per cercare.</div>';
+        $("#teacher-search-status").textContent = "Scrivi almeno due lettere per cercare.";
         return;
       }
       const allMatches = (teacherManifest?.teachers || []).filter(teacher => teacher.status === "done" && normalize(teacher.name).includes(query));
