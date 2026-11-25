@@ -438,6 +438,8 @@
       color: var(--ink);
       padding: 8px 10px;
       text-align: left;
+      text-decoration: none;
+      cursor: pointer;
       transition: background .2s ease,
                   padding .28s cubic-bezier(.22, 1, .36, 1),
                   transform .28s cubic-bezier(.22, 1, .36, 1);

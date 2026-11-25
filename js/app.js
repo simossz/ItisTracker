@@ -229,13 +229,14 @@ const $ = (selector) => document.querySelector(selector);
       })();
       return studentLoadPromise;
     }
-    if ($("#student-search")) $("#student-search").addEventListener("input", event => {
+    if ($("#student-search")) $("#student-search").addEventListener("input", async event => {
       const query = normalize(event.target.value);
       if (query.length < 2) {
         $("#student-results").innerHTML = '<div class="empty">Scrivi almeno 2 lettere per cercare.</div>';
         $("#student-search-status").textContent = "Scrivi almeno due lettere per cercare.";
         return;
       }
+      await ensurePersonLinks();
       const allMatches = (studentManifest?.students || []).filter(student => normalize(student.name).includes(query));
       const matches = allMatches.slice(0, 40);
       $("#student-search-status").textContent = searchResultAnnouncement(
@@ -244,38 +245,11 @@ const $ = (selector) => document.querySelector(selector);
         "studenti",
         "Nessuno studente trovato.",
       );
-      $("#student-results").innerHTML = matches.length ? matches.map((student, index) =>
-        `<button class="result-row result-enter" type="button" data-student-index="${studentManifest.students.indexOf(student)}" aria-pressed="false" style="animation-delay:${Math.min(index * 18, 180)}ms"><strong>${student.name}</strong><small>${student.schedule_class || ""}</small></button>`
-      ).join("") : '<div class="empty">Nessuno studente trovato.</div>';
-      $("#student-results").querySelectorAll("[data-student-index]").forEach(button => {
-        button.addEventListener("click", () => {
-          const student = studentManifest?.students?.[Number(button.dataset.studentIndex)];
-          if (!student) return;
-          const name = student.name;
-          const personLink = personLinks?.students?.[String(button.dataset.studentIndex)];
-          const linkHtml = personLink ? `<a class="person-link" href="${personLink}">Apri pagina →</a>` : "";
-          $("#student-results").querySelectorAll("[data-student-index]").forEach(item => {
-            const selected = item === button;
-            item.classList.toggle("active", selected);
-            item.setAttribute("aria-pressed", String(selected));
-          });
-          $("#student-search-status").textContent = `Orario di ${name}, classe ${studentClass(student)}, visualizzato.`;
-          const calendar = classCalendars?.classes?.[student.schedule_class]?.lessons || [];
-          $("#student-detail").innerHTML = `<div class="detail-head"><strong>${name}</strong>${linkHtml}<button class="class-roster-toggle" type="button" aria-expanded="false">Vedi elenco classe</button><span>${studentClass(student)}</span></div><div class="detail-body">${classRoster(student)}${calendar.length ? calendarGrid(calendar) : '<div class="empty">Orario non disponibile.</div>'}</div>`;
-          const rosterToggle = $("#student-detail .class-roster-toggle");
-          const roster = $("#student-detail .class-roster");
-          if (roster) {
-            rosterToggle.addEventListener("click", () => {
-              const isVisible = !roster.hidden;
-              roster.hidden = isVisible;
-              rosterToggle.textContent = isVisible ? "Vedi elenco classe" : "Nascondi elenco classe";
-              rosterToggle.setAttribute("aria-expanded", String(!isVisible));
-            });
-          } else {
-            rosterToggle.hidden = true;
-          }
-        });
-      });
+      $("#student-results").innerHTML = matches.length ? matches.map((student, index) => {
+        const studentIndex = studentManifest.students.indexOf(student);
+        const href = personLinks?.students?.[String(studentIndex)] || "#";
+        return `<a class="result-row result-enter" href="${href}" style="animation-delay:${Math.min(index * 18, 180)}ms"><strong>${student.name}</strong><small>${student.schedule_class || ""}</small></a>`;
+      }).join("") : '<div class="empty">Nessuno studente trovato.</div>';
     });
 
     async function loadTeachers() {
@@ -400,7 +374,19 @@ const $ = (selector) => document.querySelector(selector);
           const calendar = classCalendars?.classes?.[student.schedule_class]?.lessons || [];
           $("#person-name").textContent = student.name;
           $("#person-label").textContent = `Classe ${studentClass(student)}`;
-          wrap.innerHTML = calendar.length ? calendarGrid(calendar) : '<div class="empty">Orario non disponibile.</div>';
+          wrap.innerHTML = `<div class="detail-head"><button class="class-roster-toggle" type="button" aria-expanded="false">Vedi elenco classe</button><span>${studentClass(student)}</span></div><div class="detail-body">${classRoster(student)}${calendar.length ? calendarGrid(calendar) : '<div class="empty">Orario non disponibile.</div>'}</div>`;
+          const rosterToggle = wrap.querySelector(".class-roster-toggle");
+          const roster = wrap.querySelector(".class-roster");
+          if (roster) {
+            rosterToggle.addEventListener("click", () => {
+              const isVisible = !roster.hidden;
+              roster.hidden = isVisible;
+              rosterToggle.textContent = isVisible ? "Vedi elenco classe" : "Nascondi elenco classe";
+              rosterToggle.setAttribute("aria-expanded", String(!isVisible));
+            });
+          } else {
+            rosterToggle.hidden = true;
+          }
         } else if (kind === "teacher") {
           const response = await fetch("/private-data/staff-timetables.json", { cache: "no-store" });
           if (!response.ok) throw new Error();
