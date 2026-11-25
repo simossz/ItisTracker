@@ -56,6 +56,9 @@ jobs:
         run: |
           python -c "import getpass, runpy, sys; m=runpy.run_path('scripts/download_staff_timetables.py', run_name='not_main'); sys.exit(0 if m['download_teacher_schedules'](sys.argv[1], sys.argv[2], m['OUTPUT_DIR'], m['MANIFEST_PATH']) else 1)" "$ITIS_USER" "$ITIS_PASSWORD"
 
+      - name: Build individual student and teacher pages
+        run: python scripts/build_person_pages.py
+
       - name: Prepare minimal Pages artifact
         run: python scripts/prepare_site.py
 
