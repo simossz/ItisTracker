@@ -103,7 +103,7 @@ def page_html(name, lessons, all_classes):
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f4ef">
-  <title>ItisTracker</title>
+  <title>{escape(title)}</title>
   <meta name="description" content="{escape(description)}">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="{canonical}">

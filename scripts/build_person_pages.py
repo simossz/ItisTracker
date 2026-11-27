@@ -9,6 +9,10 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = PROJECT_ROOT / "person-pages"
 
 
+def escape(value):
+    return str(value or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
+
+
 def slugify(value, suffix=None):
     text = unicodedata.normalize("NFKD", str(value or ""))
     text = "".join(char for char in text if not unicodedata.combining(char)).lower()
@@ -55,7 +59,7 @@ def shell(title, description, page, key, body):
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f4ef">
-  <title>ItisTracker</title>
+  <title>{escape(title)} — Orario ITIS Parma | ItisTracker</title>
   <meta name="description" content="{description}">
   <meta name="robots" content="{'noindex, nofollow' if page == 'student' else 'index, follow'}">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23171715'/%3E%3Crect x='16' y='16' width='32' height='32' rx='4' fill='none' stroke='%23fff' stroke-width='4'/%3E%3Cpath d='M16 32h32M32 16v32' stroke='%23fff' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='4' fill='%23171715' stroke='%23fff' stroke-width='3'/%3E%3C/svg%3E">
@@ -116,8 +120,10 @@ def build():
             target = OUTPUT / "studenti" / slug / "index.html"
             target.parent.mkdir(parents=True, exist_ok=True)
             name = student.get("name", "Studente")
+            cls = student.get("schedule_class") or str(student.get("class") or "").split(" - ")[0].strip()
+            label = f"Classe {cls}" if cls else "Studente"
             target.write_text(
-                shell(name, f"Classe {student.get('schedule_class', '')}", "student", str(index),
+                shell(name, label, "student", str(index),
                       '<div id="person-detail"><div class="empty">Caricamento orario…</div></div>'),
                 encoding="utf-8",
             )

@@ -402,8 +402,9 @@ const escapeHtml = (value) => String(value || "").replace(/[&<>"']/g, (ch) => ({
           await ensureClassCalendars();
           const calendar = classCalendars?.classes?.[student.schedule_class]?.lessons || [];
           $("#person-name").textContent = student.name;
-          $("#person-label").textContent = `Classe ${studentClass(student)}`;
-          const noTimetable = `<div class="empty">L'orario della classe ${escapeHtml(studentClass(student))} non è ancora disponibile. Puoi comunque vedere l'elenco della classe.</div>`;
+          const personClass = studentClass(student);
+          $("#person-label").textContent = personClass ? `Classe ${personClass}` : "Studente";
+          const noTimetable = `<div class="empty">${personClass ? `L'orario della classe ${escapeHtml(personClass)} non è ancora disponibile.` : "L'orario di questo studente non è ancora disponibile."} Puoi comunque vedere l'elenco della classe.</div>`;
           wrap.innerHTML = `<div class="detail-head"><button class="class-roster-toggle" type="button" aria-expanded="false">Vedi elenco classe</button><span>${escapeHtml(studentClass(student))}</span></div><div class="detail-body">${classRoster(student)}${calendar.length ? calendarGrid(calendar) : noTimetable}</div>`;
           const rosterToggle = wrap.querySelector(".class-roster-toggle");
           const roster = wrap.querySelector(".class-roster");

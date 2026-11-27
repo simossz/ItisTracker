@@ -21,7 +21,10 @@ def build():
     student_source = PROJECT_ROOT / "private-data" / "student-index.json"
     if student_source.is_file():
         students = json.loads(student_source.read_text(encoding="utf-8")).get("students", [])
-        rows = [[s.get("name", ""), s.get("schedule_class", "")] for s in students]
+        rows = [
+            [s.get("name", ""), s.get("schedule_class") or str(s.get("class") or "").split(" - ")[0].strip()]
+            for s in students
+        ]
         target = PROJECT_ROOT / "private-data" / "student-index-web.json"
         target.write_text(json.dumps({"students": rows}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 

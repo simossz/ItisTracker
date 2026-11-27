@@ -181,7 +181,7 @@ def head(page):
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f4ef">
-  <title>ItisTracker</title>
+  <title>{page["title"]}</title>
   <meta name="description" content="{page["description"]}">
   <meta name="robots" content="index, follow">
   <meta name="keywords" content="ItisTracker, ITIS Parma, ITIS Leonardo da Vinci Parma, orari scolastici Parma, orario classi, studenti, docenti">
