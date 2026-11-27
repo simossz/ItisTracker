@@ -201,7 +201,7 @@ const $ = (selector) => document.querySelector(selector);
         } catch (error) {
           classLinks = {};
         }
-        const selectedClass = $("#class-select").value;
+        const selectedClass = document.body.dataset.class || $("#class-select").value;
         const classes = classManifest.classes.filter(item => item.status === "done" && item.local_file);
         $("#class-select").replaceChildren();
         classes.forEach(item => $("#class-select").add(new Option(item.name, item.name)));

@@ -115,7 +115,7 @@ def page_html(name, lessons, all_classes):
   <script type="application/ld+json">{json.dumps(breadcrumb, ensure_ascii=False)}</script>
   <script type="application/ld+json">{json.dumps(faq, ensure_ascii=False)}</script>
 </head>
-<body data-page="classe">
+<body data-page="classe" data-class="{escape(name)}">
   <header class="masthead">
     <a class="brand" href="/" aria-label="ItisTracker, inizio">
       <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2" stroke-width="1.8"/><path d="M4 12h16M12 4v16" stroke-width="1.8"/><circle cx="12" cy="12" r="2" fill="var(--ink)" stroke="var(--bg)" stroke-width="1.2"/></svg></span>
