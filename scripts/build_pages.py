@@ -18,14 +18,6 @@ def slugify(value):
     return re.sub(r"[^a-z0-9]+", "-", text).strip("-") or "classe"
 
 
-_classes = json.loads((repo / "data" / "class-calendars.json").read_text(encoding="utf-8")).get("classes", {})
-CLASS_SELECT = (
-    '<div class="field"><label for="class-select">Classe</label>'
-    '<select id="class-select" disabled>'
-    + "".join(f'<option value="{name}">{name}</option>' for name in _classes)
-    + '</select></div>'
-)
-
 BRAND_SVG = '''<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <rect x="4" y="4" width="16" height="16" rx="2" stroke-width="1.8"/>
           <path d="M4 12h16M12 4v16" stroke-width="1.8"/>
@@ -112,7 +104,7 @@ PAGES = [
           <h2>Docente</h2>
           <div class="field"><label for="teacher-search">Nome o cognome</label><input id="teacher-search" type="search" autocomplete="off" placeholder="Scrivi…" aria-controls="teacher-results" aria-describedby="teacher-search-help" disabled></div>
           <span class="sr-only" id="teacher-search-help">Scrivi almeno due lettere. Usa le frecce per esplorare i risultati e Invio per selezionarne uno.</span>
-          ''' + CLASS_SELECT + '''</aside>
+        </aside>
         <div class="content">
           <div class="results" id="teacher-results" aria-label="Risultati docenti"><div class="empty">Caricamento docenti…</div></div>
           <p class="sr-only" id="teacher-search-status" role="status" aria-live="polite" aria-atomic="true"></p>
