@@ -158,7 +158,7 @@ def page_html(name, lessons, all_classes):
   </main>
   <footer>
     <span>Realizzato da <a href="https://github.com/simossz" target="_blank" rel="noopener noreferrer">Simone Zani</a></span>
-    <span>Contatti: <a href="mailto:supporto@itistracker.it">supporto@itistracker.it</a></span>
+    <span>Contatti: <a href="mailto:support@itistracker.it">support@itistracker.it</a></span>
   </footer>
   <script src="/js/app.js?v={BUILD_VERSION}" defer></script>
 </body>
