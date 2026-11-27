@@ -8,6 +8,14 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = PROJECT_ROOT / "person-pages"
 
+_ALL_CLASSES = json.loads((PROJECT_ROOT / "data" / "class-calendars.json").read_text(encoding="utf-8")).get("classes", {})
+CLASS_SELECT = (
+    '<div class="field person-class-select"><label for="class-select">Classe</label>'
+    '<select id="class-select" disabled>'
+    + "".join(f'<option value="{name}">{name}</option>' for name in _ALL_CLASSES)
+    + '</select></div>'
+)
+
 
 def slugify(value, suffix=None):
     text = unicodedata.normalize("NFKD", str(value or ""))
@@ -49,7 +57,7 @@ def shell(title, description, page, key, body):
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f4ef">
-  <title>{title}</title>
+  <title>ItisTracker</title>
   <meta name="description" content="{description}">
   <meta name="robots" content="{'noindex, nofollow' if page == 'student' else 'index, follow'}">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23171715'/%3E%3Crect x='16' y='16' width='32' height='32' rx='4' fill='none' stroke='%23fff' stroke-width='4'/%3E%3Cpath d='M16 32h32M32 16v32' stroke='%23fff' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='4' fill='%23171715' stroke='%23fff' stroke-width='3'/%3E%3C/svg%3E">
@@ -78,6 +86,7 @@ def shell(title, description, page, key, body):
       <h1 id="person-name">{title}</h1>
       <p id="person-label">{description}</p>
     </section>
+    {CLASS_SELECT}
     {body}
   </main>
   <footer>

@@ -110,6 +110,7 @@ const $ = (selector) => document.querySelector(selector);
     }
 
     function showClass(name) {
+      if (!$("#schedule-wrap")) return;
       if (!classCalendars) {
         $("#schedule-wrap").innerHTML = '<div class="empty">Caricamento orario…</div>';
         return;
@@ -405,10 +406,9 @@ const $ = (selector) => document.querySelector(selector);
     }
 
     const page = document.body.dataset.page || "orario";
-    if (page === "orario") {
-      loadClasses();
-      setInterval(loadClasses, 6 * 60 * 60 * 1000);
-    } else if (page === "studenti") {
+    loadClasses();
+    setInterval(loadClasses, 6 * 60 * 60 * 1000);
+    if (page === "studenti") {
       ensurePersonLinks();
       loadStudents();
     } else if (page === "docenti") {

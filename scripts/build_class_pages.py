@@ -11,6 +11,14 @@ OUTPUT = PROJECT_ROOT / "class-pages"
 BASE = "https://itis.simocode.xyz"
 TODAY = date.today().isoformat()
 
+_ALL_CLASSES = json.loads((PROJECT_ROOT / "data" / "class-calendars.json").read_text(encoding="utf-8")).get("classes", {})
+CLASS_SELECT = (
+    '<div class="field"><label for="class-select">Classe</label>'
+    '<select id="class-select" disabled>'
+    + "".join(f'<option value="{name}">{name}</option>' for name in _ALL_CLASSES)
+    + '</select></div>'
+)
+
 DAYS = ["Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato"]
 HOURS = ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00"]
 
@@ -89,7 +97,7 @@ def page_html(name, lessons, all_classes):
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f4ef">
-  <title>{escape(title)}</title>
+  <title>ItisTracker</title>
   <meta name="description" content="{escape(description)}">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="{canonical}">
@@ -126,12 +134,15 @@ def page_html(name, lessons, all_classes):
     <section class="page-head">
       <nav class="breadcrumb" aria-label="Percorso"><a href="/orario/">Orario classi</a> › <span>Classe {escape(name)}</span></nav>
       <h1>Orario classe {escape(name)}</h1>
-      <p>Orario settimanale della classe {escape(name)} dell'ITIS Leonardo da Vinci di Parma. {len(lessons)} lezioni, {len(subjects)} materie.</p>
     </section>
-    <div class="class-content">
-      {timetable_html(lessons)}
-      <p class="class-meta">{len(lessons)} lezioni · {len(subjects)} materie · {len(rooms)} aule</p>
-      <p class="class-meta"><a href="/orario/">Scegli un'altra classe</a></p>
+    <div class="workspace">
+      <aside class="side">
+        <h2>Classe</h2>
+        {CLASS_SELECT}
+      </aside>
+      <div class="class-content">
+        {timetable_html(lessons)}
+      </div>
     </div>
   </main>
   <footer>

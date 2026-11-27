@@ -13,8 +13,11 @@ def slugify(value):
 
 
 _classes = json.loads((repo / "data" / "class-calendars.json").read_text(encoding="utf-8")).get("classes", {})
-CLASS_LINKS = " ".join(
-    f'<a class="room-chip" href="/orario/{slugify(name)}/">{name}</a>' for name in _classes
+CLASS_SELECT = (
+    '<div class="field"><label for="class-select">Classe</label>'
+    '<select id="class-select" disabled>'
+    + "".join(f'<option value="{name}">{name}</option>' for name in _classes)
+    + '</select></div>'
 )
 
 BRAND_SVG = '''<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -80,7 +83,7 @@ PAGES = [
           <h2>Studente</h2>
           <div class="field"><label for="student-search">Nome o cognome</label><input id="student-search" type="search" autocomplete="off" placeholder="Scrivi…" aria-controls="student-results" aria-describedby="student-search-help" disabled></div>
           <span class="sr-only" id="student-search-help">Scrivi almeno due lettere. Usa le frecce per esplorare i risultati e Invio per selezionarne uno.</span>
-        </aside>
+          ''' + CLASS_SELECT + '''</aside>
         <div class="content">
           <div class="results" id="student-results" aria-label="Risultati studenti"><div class="empty">Caricamento studenti…</div></div>
           <p class="sr-only" id="student-search-status" role="status" aria-live="polite" aria-atomic="true"></p>
@@ -103,7 +106,7 @@ PAGES = [
           <h2>Docente</h2>
           <div class="field"><label for="teacher-search">Nome o cognome</label><input id="teacher-search" type="search" autocomplete="off" placeholder="Scrivi…" aria-controls="teacher-results" aria-describedby="teacher-search-help" disabled></div>
           <span class="sr-only" id="teacher-search-help">Scrivi almeno due lettere. Usa le frecce per esplorare i risultati e Invio per selezionarne uno.</span>
-        </aside>
+          ''' + CLASS_SELECT + '''</aside>
         <div class="content">
           <div class="results" id="teacher-results" aria-label="Risultati docenti"><div class="empty">Caricamento docenti…</div></div>
           <p class="sr-only" id="teacher-search-status" role="status" aria-live="polite" aria-atomic="true"></p>
@@ -180,7 +183,7 @@ def head(page):
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f4ef">
-  <title>{page["title"]}</title>
+  <title>ItisTracker</title>
   <meta name="description" content="{page["description"]}">
   <meta name="robots" content="index, follow">
   <meta name="keywords" content="ItisTracker, ITIS Parma, ITIS Leonardo da Vinci Parma, orari scolastici Parma, orario classi, studenti, docenti">
