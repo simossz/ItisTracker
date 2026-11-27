@@ -1,4 +1,5 @@
 :root {
+      color-scheme: light;
       --bg: #f5f4ef;
       --paper: #fff;
       --ink: #171715;
@@ -9,6 +10,7 @@
       --header: rgba(245,244,239,.94);
     }
     [data-theme="dark"] {
+      color-scheme: dark;
       --bg: #191918;
       --paper: #20201e;
       --ink: #f2f1ea;
@@ -666,6 +668,25 @@
       ::view-transition-new(root) {
         animation-duration: .01ms !important;
       }
+    }
+
+    @media (max-width: 850px) {
+      #theme-toggle {
+        width: 42px;
+        height: 42px;
+        border: 1px solid var(--line);
+        background: var(--paper);
+      }
+      .mobile-social .icon-button {
+        width: 34px;
+        height: 34px;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        opacity: .9;
+      }
+      [data-theme="dark"] .calendar-cell.empty-cell { color: #9b9a92; }
+      [data-theme="dark"] .lesson { border-color: var(--line); }
+      [data-theme="dark"] .field label { color: var(--muted); }
     }
 
   .page-head { margin: 0 0 24px; animation: view-in .42s cubic-bezier(.22, 1, .36, 1) both; }
