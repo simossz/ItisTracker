@@ -147,6 +147,7 @@ def head(page):
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "ItisTracker",
+        "logo": {"@type": "ImageObject", "url": "https://itistracker.it/logo.png"},
         "url": "https://itistracker.it/",
         "description": "Orari online dell'ITIS Leonardo da Vinci di Parma: classi, studenti e docenti.",
         "inLanguage": "it",
@@ -192,13 +193,16 @@ def head(page):
   <meta property="og:title" content="{page["title"]}">
   <meta property="og:description" content="{page["description"]}">
   <meta property="og:url" content="{page["canonical"]}">
+  <meta property="og:image" content="https://itistracker.it/logo.png">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="{page["title"]}">
   <meta name="twitter:description" content="{page["description"]}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500&display=swap" rel="stylesheet">
-  <link rel="icon" href="{FAVICON}">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="/css/style.css">
   <script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>
 {ld_extra}</head>

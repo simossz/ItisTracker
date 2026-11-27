@@ -65,6 +65,9 @@ jobs:
       - name: Build compact web data
         run: python scripts/build_web_data.py
 
+      - name: Build favicon and logo
+        run: python scripts/build_icons.py
+
       - name: Prepare minimal Pages artifact
         run: python scripts/prepare_site.py
 

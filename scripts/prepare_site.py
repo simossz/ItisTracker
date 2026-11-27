@@ -11,6 +11,10 @@ ROOT_FILES = (
     "robots.txt",
     "sitemap.xml",
     "google6baad8fa7abc046f.html",
+    "favicon.ico",
+    "favicon.png",
+    "apple-touch-icon.png",
+    "logo.png",
     "404.html",
 )
 PAGE_FILES = (

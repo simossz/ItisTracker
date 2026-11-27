@@ -113,7 +113,10 @@ def page_html(name, lessons, all_classes):
   <meta property="og:title" content="{escape(title)}">
   <meta property="og:description" content="{escape(description)}">
   <meta property="og:url" content="{canonical}">
-  <link rel="icon" href="{FAVICON}">
+  <meta property="og:image" content="https://itistracker.it/logo.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500&display=swap" rel="stylesheet">
@@ -217,7 +220,9 @@ def build():
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pagina non trovata — ItisTracker</title>
   <meta name="robots" content="noindex">
-  <link rel="icon" href="{FAVICON}">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body data-page="404">
