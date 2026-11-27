@@ -18,6 +18,24 @@ def slugify(value, suffix=None):
     return text or "sconosciuto"
 
 
+DAYS = ["Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato"]
+HOURS = ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00"]
+
+
+def timetable_html(lessons):
+    rows = []
+    for lesson in lessons:
+        day = lesson.get("day", "")
+        start = lesson.get("start", "")
+        end = lesson.get("end", "")
+        subject = str(lesson.get("subject") or lesson.get("text") or "Lezione").replace("<", "&lt;")
+        room = str(lesson.get("room") or "").replace("<", "&lt;")
+        rows.append(f"<tr><th scope='row'>{day} {start}–{end}</th><td>{subject}" + (f" · Aula {room}" if room else "") + "</td></tr>")
+    if not rows:
+        return '<p class="empty">Orario non ancora disponibile.</p>'
+    return '<table class="seo-table"><thead><tr><th>Giorno e ora</th><th>Lezione</th></tr></thead><tbody>' + "".join(rows) + "</tbody></table>"
+
+
 def shell(title, description, page, key, body):
     nav = [
         ("Orario", "/orario/", "orario"),
@@ -33,7 +51,7 @@ def shell(title, description, page, key, body):
   <meta name="theme-color" content="#f5f4ef">
   <title>{title}</title>
   <meta name="description" content="{description}">
-  <meta name="robots" content="noindex, nofollow">
+  <meta name="robots" content="{'noindex, nofollow' if page == 'student' else 'index, follow'}">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23171715'/%3E%3Crect x='16' y='16' width='32' height='32' rx='4' fill='none' stroke='%23fff' stroke-width='4'/%3E%3Cpath d='M16 32h32M32 16v32' stroke='%23fff' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='4' fill='%23171715' stroke='%23fff' stroke-width='3'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -106,9 +124,10 @@ def build():
             target = OUTPUT / "docenti" / slug / "index.html"
             target.parent.mkdir(parents=True, exist_ok=True)
             name = teacher.get("name", "Docente")
+            lessons = teacher.get("lessons", [])
             target.write_text(
                 shell(name, "Docente · anno completo", "teacher", code,
-                      '<div id="person-detail"><div class="empty">Caricamento orario…</div></div>'),
+                      '<div id="person-detail"><h2>Orario del docente</h2>' + timetable_html(lessons) + '</div>'),
                 encoding="utf-8",
             )
             links["teachers"][code] = path

@@ -387,17 +387,8 @@ const $ = (selector) => document.querySelector(selector);
           } else {
             rosterToggle.hidden = true;
           }
-        } else if (kind === "teacher") {
-          const response = await fetch("/private-data/staff-timetables.json", { cache: "no-store" });
-          if (!response.ok) throw new Error();
-          const manifest = await response.json();
-          const teacher = (manifest.teachers || []).find(item => item.resource_code === key);
-          if (!teacher) throw new Error();
-          $("#person-name").textContent = teacher.name;
-          $("#person-label").textContent = "Docente · anno completo";
-          const calendar = teacher.lessons || [];
-          wrap.innerHTML = calendar.length ? calendarGrid(calendar) : '<div class="empty">Tabella non ancora disponibile.</div>';
         }
+        // Le pagine dei docenti sono già complete in HTML statico: il JS non le modifica.
       } catch (error) {
         wrap.innerHTML = '<div class="empty">Dati non disponibili.</div>';
       }
