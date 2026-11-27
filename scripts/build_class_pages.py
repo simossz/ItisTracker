@@ -14,7 +14,7 @@ TODAY = date.today().isoformat()
 _ALL_CLASSES = json.loads((PROJECT_ROOT / "data" / "class-calendars.json").read_text(encoding="utf-8")).get("classes", {})
 CLASS_SELECT = (
     '<div class="field"><label for="class-select">Seleziona</label>'
-    '<select id="class-select" disabled>'
+    '<select id="class-select">'
     + "".join(f'<option value="{name}">{name}</option>' for name in _ALL_CLASSES)
     + '</select></div>'
 )
@@ -37,7 +37,10 @@ def escape(value):
 
 def nav():
     items = [("Orario", "/orario/"), ("Studenti", "/studenti/"), ("Docenti", "/docenti/")]
-    return "\n      ".join(f'<a href="{href}">{label}</a>' for label, href in items)
+    return "\n      ".join(
+        f'<a href="{href}"' + (' aria-current="page"' if label == "Orario" else '') + f'>{label}</a>'
+        for label, href in items
+    )
 
 
 def timetable_html(lessons):

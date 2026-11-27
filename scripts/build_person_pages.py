@@ -8,14 +8,6 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = PROJECT_ROOT / "person-pages"
 
-_ALL_CLASSES = json.loads((PROJECT_ROOT / "data" / "class-calendars.json").read_text(encoding="utf-8")).get("classes", {})
-CLASS_SELECT = (
-    '<div class="field person-class-select"><label for="class-select">Classe</label>'
-    '<select id="class-select" disabled>'
-    + "".join(f'<option value="{name}">{name}</option>' for name in _ALL_CLASSES)
-    + '</select></div>'
-)
-
 
 def slugify(value, suffix=None):
     text = unicodedata.normalize("NFKD", str(value or ""))
@@ -86,7 +78,6 @@ def shell(title, description, page, key, body):
       <h1 id="person-name">{title}</h1>
       <p id="person-label">{description}</p>
     </section>
-    {CLASS_SELECT}
     {body}
   </main>
   <footer>

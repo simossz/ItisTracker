@@ -83,7 +83,7 @@ PAGES = [
           <h2>Studente</h2>
           <div class="field"><label for="student-search">Nome o cognome</label><input id="student-search" type="search" autocomplete="off" placeholder="Scrivi…" aria-controls="student-results" aria-describedby="student-search-help" disabled></div>
           <span class="sr-only" id="student-search-help">Scrivi almeno due lettere. Usa le frecce per esplorare i risultati e Invio per selezionarne uno.</span>
-          ''' + CLASS_SELECT + '''</aside>
+        </aside>
         <div class="content">
           <div class="results" id="student-results" aria-label="Risultati studenti"><div class="empty">Caricamento studenti…</div></div>
           <p class="sr-only" id="student-search-status" role="status" aria-live="polite" aria-atomic="true"></p>
