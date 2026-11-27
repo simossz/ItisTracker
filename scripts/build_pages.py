@@ -240,7 +240,8 @@ def shell(page):
   </main>
 
   <footer>
-    <span>Realizzato da <a href="https://github.com/simossz" target="_blank" rel="noopener noreferrer">Simone Zani</a> · Contatti: <a href="mailto:supporto@itistracker.it">supporto@itistracker.it</a></span>
+    <span>Realizzato da <a href="https://github.com/simossz" target="_blank" rel="noopener noreferrer">Simone Zani</a></span>
+    <span>Contatti: <a href="mailto:supporto@itistracker.it">supporto@itistracker.it</a></span>
   </footer>
   <script src="/js/app.js" defer></script>
 </body>

@@ -88,7 +88,8 @@ def shell(title, description, page, key, body):
     {body}
   </main>
   <footer>
-    <span>Realizzato da <a href="https://github.com/simossz" target="_blank" rel="noopener noreferrer">Simone Zani</a> · <a href="/studenti/">Torna alla ricerca</a> · Contatti: <a href="mailto:supporto@itistracker.it">supporto@itistracker.it</a></span>
+    <span>Realizzato da <a href="https://github.com/simossz" target="_blank" rel="noopener noreferrer">Simone Zani</a> · <a href="/studenti/">Torna alla ricerca</a></span>
+    <span>Contatti: <a href="mailto:supporto@itistracker.it">supporto@itistracker.it</a></span>
   </footer>
   <script src="/js/app.js" defer></script>
 </body>
