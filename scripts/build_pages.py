@@ -38,7 +38,7 @@ PAGES = [
         "page": "orario",
         "title": "ItisTracker — Orari classi ITIS Parma",
         "description": "ItisTracker: orari online dell'ITIS Leonardo da Vinci di Parma. Consulta l'orario settimanale di qualsiasi classe, con materia, aula e orario.",
-        "canonical": "https://itistracker.it/",
+        "canonical": "https://itis.simocode.xyz/",
         "h1": "Orario delle classi",
         "lead": "Seleziona una classe per vedere le lezioni della settimana, con materia, aula e orario.",
         "body": '''<section class="view active" id="class-view">
@@ -56,7 +56,7 @@ PAGES = [
         "page": "orario",
         "title": "Orari classi ITIS Parma — ItisTracker",
         "description": "Consulta l'orario settimanale delle classi dell'ITIS Leonardo da Vinci di Parma: lezioni, materie, docenti e aule ora per ora.",
-        "canonical": "https://itistracker.it/orario/",
+        "canonical": "https://itis.simocode.xyz/orario/",
         "h1": "Orario delle classi",
         "lead": "Seleziona una classe per vedere le lezioni della settimana, con materia, aula e orario.",
         "body": '''<section class="view active" id="class-view">
@@ -74,7 +74,7 @@ PAGES = [
         "page": "studenti",
         "title": "Cerca studente ITIS Parma — ItisTracker",
         "description": "Cerca uno studente dell'ITIS Leonardo da Vinci di Parma per nome o cognome e visualizza il suo orario e l'elenco della classe.",
-        "canonical": "https://itistracker.it/studenti/",
+        "canonical": "https://itis.simocode.xyz/studenti/",
         "h1": "Cerca studente",
         "lead": "Scrivi almeno due lettere del nome o del cognome per trovare lo studente e vedere il suo orario.",
         "body": '''<section class="view active" id="student-view">
@@ -97,7 +97,7 @@ PAGES = [
         "page": "docenti",
         "title": "Cerca docente ITIS Parma — ItisTracker",
         "description": "Cerca un docente dell'ITIS Leonardo da Vinci di Parma per nome o cognome e consulta il suo orario annuale.",
-        "canonical": "https://itistracker.it/docenti/",
+        "canonical": "https://itis.simocode.xyz/docenti/",
         "h1": "Cerca docente",
         "lead": "Scrivi almeno due lettere del nome o del cognome per trovare il docente e vedere il suo orario.",
         "body": '''<section class="view active" id="teacher-view">
@@ -120,7 +120,7 @@ PAGES = [
         "page": "aule-libere",
         "title": "Aule libere adesso all'ITIS Parma — ItisTracker",
         "description": "Scopri in tempo reale quali aule sono libere all'ITIS Leonardo da Vinci di Parma, calcolate dagli orari delle classi.",
-        "canonical": "https://itistracker.it/aule-libere/",
+        "canonical": "https://itis.simocode.xyz/aule-libere/",
         "h1": "Aule libere adesso",
         "lead": "Le aule non occupate in questo momento, calcolate dagli orari delle classi. Si aggiornano da sole ogni cinque minuti.",
         "body": '''<section class="view active" id="free-view">
@@ -149,7 +149,7 @@ def head(page):
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "ItisTracker",
-        "url": "https://itistracker.it/",
+        "url": "https://itis.simocode.xyz/",
         "description": "Orari online dell'ITIS Leonardo da Vinci di Parma: classi, studenti e docenti.",
         "inLanguage": "it",
         "publisher": {
@@ -159,7 +159,7 @@ def head(page):
         },
         "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://itistracker.it/studenti/?q={search_term_string}",
+            "target": "https://itis.simocode.xyz/studenti/?q={search_term_string}",
             "query-input": "required name=search_term_string",
         },
     }
@@ -242,7 +242,7 @@ def shell(page):
   </main>
 
   <footer>
-    <span>Orari dell'<a href="https://itis.pr.it/" target="_blank" rel="noopener noreferrer">ITIS Leonardo da Vinci di Parma</a> · realizzato da <a href="https://github.com/simossz" target="_blank" rel="noopener noreferrer">Simone Zani</a></span>
+    <span>Orari dell'<a href="https://itis.pr.it/" target="_blank" rel="noopener noreferrer">ITIS Leonardo da Vinci di Parma</a> · realizzato da <a href="https://github.com/simossz" target="_blank" rel="noopener noreferrer">Simone Zani</a> · <a href="mailto:support@itistracker.it">Segnala un problema</a></span>
   </footer>
   <script src="/js/app.js"></script>
 </body>
@@ -262,10 +262,10 @@ for page in PAGES:
 
 sitemap = '''<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://itistracker.it/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://itistracker.it/orario/</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
-  <url><loc>https://itistracker.it/studenti/</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://itistracker.it/docenti/</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://itis.simocode.xyz/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://itis.simocode.xyz/orario/</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://itis.simocode.xyz/studenti/</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://itis.simocode.xyz/docenti/</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
 </urlset>
 '''
 (repo / "sitemap.xml").write_text(sitemap, encoding="utf-8")

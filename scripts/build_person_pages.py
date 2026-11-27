@@ -90,7 +90,7 @@ def shell(title, description, page, key, body):
     {body}
   </main>
   <footer>
-    <span>Orari dell'ITIS Leonardo da Vinci di Parma · <a href="/studenti/">Torna alla ricerca</a></span>
+    <span>Orari dell'ITIS Leonardo da Vinci di Parma · <a href="/studenti/">Torna alla ricerca</a> · <a href="mailto:support@itistracker.it">Segnala un problema</a></span>
   </footer>
   <script src="/js/app.js"></script>
 </body>

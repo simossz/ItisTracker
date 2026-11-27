@@ -13,7 +13,7 @@ TODAY = date.today().isoformat()
 
 _ALL_CLASSES = json.loads((PROJECT_ROOT / "data" / "class-calendars.json").read_text(encoding="utf-8")).get("classes", {})
 CLASS_SELECT = (
-    '<div class="field"><label for="class-select">Classe</label>'
+    '<div class="field"><label for="class-select">Seleziona</label>'
     '<select id="class-select" disabled>'
     + "".join(f'<option value="{name}">{name}</option>' for name in _ALL_CLASSES)
     + '</select></div>'
@@ -137,7 +137,6 @@ def page_html(name, lessons, all_classes):
     </section>
     <div class="workspace">
       <aside class="side">
-        <h2>Classe</h2>
         {CLASS_SELECT}
       </aside>
       <div class="class-content">
@@ -146,7 +145,7 @@ def page_html(name, lessons, all_classes):
     </div>
   </main>
   <footer>
-    <span>Orari dell'<a href="https://itis.pr.it/" target="_blank" rel="noopener noreferrer">ITIS Leonardo da Vinci di Parma</a> · <a href="https://github.com/simossz" target="_blank" rel="noopener noreferrer">Simone Zani</a></span>
+    <span>Orari dell'<a href="https://itis.pr.it/" target="_blank" rel="noopener noreferrer">ITIS Leonardo da Vinci di Parma</a> · <a href="https://github.com/simossz" target="_blank" rel="noopener noreferrer">Simone Zani</a> · <a href="mailto:support@itistracker.it">Segnala un problema</a></span>
   </footer>
   <script src="/js/app.js"></script>
 </body>
