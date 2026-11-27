@@ -88,9 +88,9 @@ def shell(title, description, page, key, body):
     {body}
   </main>
   <footer>
-    <span>Realizzato da <a href="https://github.com/simossz" target="_blank" rel="noopener noreferrer">Simone Zani</a> · <a href="/studenti/">Torna alla ricerca</a> · <a href="mailto:support@itistracker.it">supporto@itistracker.it</a></span>
+    <span>Realizzato da <a href="https://github.com/simossz" target="_blank" rel="noopener noreferrer">Simone Zani</a> · <a href="/studenti/">Torna alla ricerca</a> · Contatti: <a href="mailto:supporto@itistracker.it">supporto@itistracker.it</a></span>
   </footer>
-  <script src="/js/app.js"></script>
+  <script src="/js/app.js" defer></script>
 </body>
 </html>
 '''
@@ -140,6 +140,17 @@ def build():
             links["teachers"][code] = path
 
     (OUTPUT / "links.json").write_text(json.dumps(links, ensure_ascii=False), encoding="utf-8")
+
+    teacher_index = PROJECT_ROOT / "private-data" / "staff-timetables.json"
+    if teacher_index.is_file():
+        teachers = json.loads(teacher_index.read_text(encoding="utf-8")).get("teachers", [])
+        light = [
+            {"name": t.get("name", ""), "resource_code": t.get("resource_code", ""), "status": t.get("status", "")}
+            for t in teachers
+        ]
+        (PROJECT_ROOT / "private-data" / "staff-index.json").write_text(
+            json.dumps({"teachers": light}, ensure_ascii=False), encoding="utf-8"
+        )
     print(f"pagine studenti: {len(links['students'])}, docenti: {len(links['teachers'])}")
 
 

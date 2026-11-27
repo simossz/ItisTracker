@@ -9,18 +9,32 @@ const $ = (selector) => document.querySelector(selector);
       const message = count === 1 ? `Trovato 1 ${singular}` : `Trovati ${count} ${plural}`;
       return `${message}${count > 40 ? ". Mostrati i primi 40." : "."}`;
     }
-    let classManifest, classCalendars, studentManifest, teacherManifest, personLinks, classLinks;
+    let classCalendars, studentManifest, teacherManifest, teacherFull;
     let studentLoadPromise, teacherLoadPromise;
 
-    async function ensurePersonLinks() {
-      if (personLinks) return personLinks;
-      try {
-        const response = await fetch("/person-pages/links.json", { cache: "no-store" });
-        if (response.ok) personLinks = await response.json();
-      } catch (error) {
-        personLinks = {};
+    async function fetchJson(path, attempts = 2) {
+      for (let i = 0; i < attempts; i++) {
+        try {
+          const response = await fetch(path, { cache: "no-store" });
+          if (!response.ok) throw new Error();
+          const data = await response.json();
+          try { localStorage.setItem("itis-cache:" + path, JSON.stringify(data)); } catch (error) { /* ignore */ }
+          return data;
+        } catch (error) {
+          if (i === attempts - 1) {
+            const cached = localStorage.getItem("itis-cache:" + path);
+            if (cached) return JSON.parse(cached);
+            throw error;
+          }
+        }
       }
-      return personLinks;
+    }
+
+    function slugify(value, suffix) {
+      let text = String(value || "").normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+      text = text.replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+      if (suffix !== undefined) return `${text}-${String(suffix).toLowerCase()}`;
+      return text || "sconosciuto";
     }
 
     function applyTheme(theme) {
@@ -182,42 +196,31 @@ const $ = (selector) => document.querySelector(selector);
 
     async function ensureClassCalendars() {
       if (classCalendars) return classCalendars;
-      const response = await fetch("/data/class-calendars.json", { cache: "no-store" });
-      if (!response.ok) throw new Error();
-      classCalendars = await response.json();
+      classCalendars = await fetchJson("/data/class-calendars.json");
       return classCalendars;
     }
 
     async function loadClasses() {
       if (!$("#class-select")) return;
       try {
-        const classResponse = await fetch("/data/class-schedules.json", { cache: "no-store" });
-        if (!classResponse.ok) throw new Error();
-        classManifest = await classResponse.json();
         await ensureClassCalendars();
-        try {
-          const linksResponse = await fetch("/data/class-links.json", { cache: "no-store" });
-          if (linksResponse.ok) classLinks = await linksResponse.json();
-        } catch (error) {
-          classLinks = {};
-        }
         const selectedClass = document.body.dataset.class || $("#class-select").value;
-        const classes = classManifest.classes.filter(item => item.status === "done" && item.local_file);
+        const classes = Object.keys(classCalendars?.classes || {})
+          .filter(name => (classCalendars.classes[name].lessons || []).length);
         $("#class-select").replaceChildren();
-        classes.forEach(item => $("#class-select").add(new Option(item.name, item.name)));
+        classes.forEach(name => $("#class-select").add(new Option(name, name)));
         $("#class-select").disabled = false;
-        $("#class-select").value = classes.find(item => item.name === selectedClass)?.name
-          || classes.find(item => item.name === "1A")?.name
-          || classes[0]?.name;
+        $("#class-select").value = classes.includes(selectedClass) ? selectedClass
+          : (classes.includes("1A") ? "1A" : classes[0]);
         showClass($("#class-select").value);
       } catch (error) {
-        $("#schedule-wrap").innerHTML = '<div class="empty">Orario non disponibile.</div>';
+        if ($("#schedule-wrap") && !$("#schedule-wrap .lesson")) {
+          $("#schedule-wrap").innerHTML = '<div class="empty">Orario non disponibile.</div>';
+        }
       }
     }
     if ($("#class-select")) $("#class-select").addEventListener("change", event => {
-      const url = classLinks?.[event.target.value];
-      if (url) window.location.href = url;
-      else showClass(event.target.value);
+      window.location.href = "/orario/" + slugify(event.target.value) + "/";
     });
 
     async function loadStudents() {
@@ -226,9 +229,7 @@ const $ = (selector) => document.querySelector(selector);
       if (studentLoadPromise) return studentLoadPromise;
       studentLoadPromise = (async () => {
         try {
-          const response = await fetch("/private-data/student-index.json", { cache: "no-store" });
-          if (!response.ok) throw new Error();
-          studentManifest = await response.json();
+          studentManifest = await fetchJson("/private-data/student-index.json");
           $("#student-search").disabled = false;
           $("#student-results").innerHTML = '<div class="empty">Scrivi almeno 2 lettere per cercare.</div>';
         } catch (error) {
@@ -247,7 +248,6 @@ const $ = (selector) => document.querySelector(selector);
         $("#student-search-status").textContent = "Scrivi almeno due lettere per cercare.";
         return;
       }
-      await ensurePersonLinks();
       const allMatches = (studentManifest?.students || []).filter(student => normalize(student.name).includes(query));
       const matches = allMatches.slice(0, 40);
       $("#student-search-status").textContent = searchResultAnnouncement(
@@ -258,7 +258,7 @@ const $ = (selector) => document.querySelector(selector);
       );
       $("#student-results").innerHTML = matches.length ? matches.map((student, index) => {
         const studentIndex = studentManifest.students.indexOf(student);
-        const href = personLinks?.students?.[String(studentIndex)] || "#";
+        const href = "/studenti/" + slugify(student.name, studentIndex) + "/";
         return `<a class="result-row result-enter" href="${href}" style="animation-delay:${Math.min(index * 18, 180)}ms"><strong>${student.name}</strong><small>${student.schedule_class || ""}</small></a>`;
       }).join("") : '<div class="empty">Nessuno studente trovato.</div>';
     });
@@ -269,9 +269,7 @@ const $ = (selector) => document.querySelector(selector);
       if (teacherLoadPromise) return teacherLoadPromise;
       teacherLoadPromise = (async () => {
         try {
-          const response = await fetch("/private-data/staff-timetables.json", { cache: "no-store" });
-          if (!response.ok) throw new Error();
-          teacherManifest = await response.json();
+          teacherManifest = await fetchJson("/private-data/staff-index.json");
           $("#teacher-search").disabled = false;
           $("#teacher-results").innerHTML = '<div class="empty">Scrivi almeno 2 lettere per cercare.</div>';
         } catch (error) {
@@ -302,21 +300,29 @@ const $ = (selector) => document.querySelector(selector);
         `<button class="result-row result-enter" type="button" data-teacher="${teacher.resource_code}" aria-pressed="false" style="animation-delay:${Math.min(index * 18, 180)}ms"><strong>${teacher.name}</strong><small>Orario</small></button>`
       ).join("") : '<div class="empty">Nessun docente trovato.</div>';
       $("#teacher-results").querySelectorAll("[data-teacher]").forEach(button => {
-        button.addEventListener("click", () => {
-          const teacher = teacherManifest.teachers.find(item => item.resource_code === button.dataset.teacher);
+        button.addEventListener("click", async () => {
+          const code = button.dataset.teacher;
+          const teacher = (teacherManifest.teachers || []).find(item => item.resource_code === code);
+          if (!teacher) return;
           $("#teacher-results").querySelectorAll("[data-teacher]").forEach(item => {
             const selected = item === button;
             item.classList.toggle("active", selected);
             item.setAttribute("aria-pressed", String(selected));
           });
           $("#teacher-search-status").textContent = `Orario di ${teacher.name} visualizzato.`;
-          const personLink = personLinks?.teachers?.[teacher.resource_code];
-          const linkHtml = personLink ? `<a class="person-link" href="${personLink}">Apri pagina →</a>` : "";
-          const calendar = teacher.lessons || [];
-          const fallback = teacher.local_file
-            ? `<img src="./${teacher.local_file}" alt="Orario ufficiale di ${teacher.name}">`
-            : '<div class="empty">Tabella non ancora disponibile.</div>';
-          $("#teacher-detail").innerHTML = `<div class="detail-head"><strong>${teacher.name}</strong>${linkHtml}<span>Anno completo</span></div><div class="detail-body">${calendar.length ? calendarGrid(calendar) : fallback}</div>`;
+          const link = "/docenti/" + slugify(teacher.name, code) + "/";
+          const linkHtml = `<a class="person-link" href="${link}">Apri pagina →</a>`;
+          try {
+            if (!teacherFull) teacherFull = await fetchJson("/private-data/staff-timetables.json");
+            const full = (teacherFull.teachers || []).find(item => item.resource_code === code);
+            const calendar = full?.lessons || [];
+            const fallback = full?.local_file
+              ? `<img src="/${full.local_file}" alt="Orario ufficiale di ${teacher.name}" loading="lazy">`
+              : '<div class="empty">Tabella non ancora disponibile.</div>';
+            $("#teacher-detail").innerHTML = `<div class="detail-head"><strong>${teacher.name}</strong>${linkHtml}<span>Anno completo</span></div><div class="detail-body">${calendar.length ? calendarGrid(calendar) : fallback}</div>`;
+          } catch (error) {
+            $("#teacher-detail").innerHTML = `<div class="detail-head"><strong>${teacher.name}</strong>${linkHtml}</div>`;
+          }
         });
       });
     });
@@ -409,10 +415,8 @@ const $ = (selector) => document.querySelector(selector);
     loadClasses();
     setInterval(loadClasses, 6 * 60 * 60 * 1000);
     if (page === "studenti") {
-      ensurePersonLinks();
       loadStudents();
     } else if (page === "docenti") {
-      ensurePersonLinks();
       loadTeachers();
     } else if (page === "aule-libere") {
       loadFreeRooms();

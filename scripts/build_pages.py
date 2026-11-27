@@ -3,6 +3,12 @@ import pathlib
 
 repo = pathlib.Path(r"C:\Users\simon\AppData\Local\Temp\opencode\ItisTracker-github")
 
+from build_class_pages import timetable_html
+
+
+_classes_data = json.loads((repo / "data" / "class-calendars.json").read_text(encoding="utf-8")).get("classes", {})
+DEFAULT_LESSONS = _classes_data.get("1A", {}).get("lessons", [])
+
 
 def slugify(value):
     import re
@@ -47,7 +53,7 @@ PAGES = [
           <h2>Classe</h2>
           <div class="field"><label for="class-select">Seleziona</label><select id="class-select" disabled><option>Caricamento…</option></select></div>
         </aside>
-        <div class="content" id="schedule-wrap"><div class="empty">Caricamento orario…</div></div>
+        <div class="content" id="schedule-wrap">''' + timetable_html(DEFAULT_LESSONS) + '''</div>
       </div>
     </section>''',
     },
@@ -65,7 +71,7 @@ PAGES = [
           <h2>Classe</h2>
           <div class="field"><label for="class-select">Seleziona</label><select id="class-select" disabled><option>Caricamento…</option></select></div>
         </aside>
-        <div class="content" id="schedule-wrap"><div class="empty">Caricamento orario…</div></div>
+        <div class="content" id="schedule-wrap">''' + timetable_html(DEFAULT_LESSONS) + '''</div>
       </div>
     </section>''',
     },
@@ -242,9 +248,9 @@ def shell(page):
   </main>
 
   <footer>
-    <span>Realizzato da <a href="https://github.com/simossz" target="_blank" rel="noopener noreferrer">Simone Zani</a> · <a href="mailto:support@itistracker.it">supporto@itistracker.it</a></span>
+    <span>Realizzato da <a href="https://github.com/simossz" target="_blank" rel="noopener noreferrer">Simone Zani</a> · Contatti: <a href="mailto:supporto@itistracker.it">supporto@itistracker.it</a></span>
   </footer>
-  <script src="/js/app.js"></script>
+  <script src="/js/app.js" defer></script>
 </body>
 </html>
 '''

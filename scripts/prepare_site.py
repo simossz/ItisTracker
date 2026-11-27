@@ -21,14 +21,12 @@ PAGE_FILES = (
     "js/app.js",
 )
 DATA_FILES = (
-    "data/class-schedules.json",
     "data/class-calendars.json",
-    "data/class-links.json",
     "private-data/student-index.json",
+    "private-data/staff-index.json",
     "private-data/staff-timetables.json",
 )
 DATA_DIRS = (
-    "data/class-schedules",
     "private-data/staff-timetable-images",
 )
 EXTRA_DIRS = (
@@ -36,9 +34,7 @@ EXTRA_DIRS = (
     ("person-pages/docenti", "docenti"),
     ("class-pages/orario", "orario"),
 )
-PERSON_FILES = (
-    ("person-pages/links.json", "person-pages/links.json"),
-)
+PERSON_FILES = ()
 
 
 def require_file(relative_path):

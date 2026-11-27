@@ -6,6 +6,7 @@ data/class-calendars.json
 person-pages/
 class-pages/
 data/class-links.json
+private-data/staff-index.json
 
 # Build output
 _site/
