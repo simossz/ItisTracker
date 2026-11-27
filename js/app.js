@@ -9,7 +9,7 @@ const $ = (selector) => document.querySelector(selector);
       const message = count === 1 ? `Trovato 1 ${singular}` : `Trovati ${count} ${plural}`;
       return `${message}${count > 40 ? ". Mostrati i primi 40." : "."}`;
     }
-    let classManifest, classCalendars, studentManifest, teacherManifest, personLinks;
+    let classManifest, classCalendars, studentManifest, teacherManifest, personLinks, classLinks;
     let studentLoadPromise, teacherLoadPromise;
 
     async function ensurePersonLinks() {
@@ -194,6 +194,12 @@ const $ = (selector) => document.querySelector(selector);
         if (!classResponse.ok) throw new Error();
         classManifest = await classResponse.json();
         await ensureClassCalendars();
+        try {
+          const linksResponse = await fetch("/data/class-links.json", { cache: "no-store" });
+          if (linksResponse.ok) classLinks = await linksResponse.json();
+        } catch (error) {
+          classLinks = {};
+        }
         const selectedClass = $("#class-select").value;
         const classes = classManifest.classes.filter(item => item.status === "done" && item.local_file);
         $("#class-select").replaceChildren();
@@ -207,7 +213,11 @@ const $ = (selector) => document.querySelector(selector);
         $("#schedule-wrap").innerHTML = '<div class="empty">Orario non disponibile.</div>';
       }
     }
-    if ($("#class-select")) $("#class-select").addEventListener("change", event => showClass(event.target.value));
+    if ($("#class-select")) $("#class-select").addEventListener("change", event => {
+      const url = classLinks?.[event.target.value];
+      if (url) window.location.href = url;
+      else showClass(event.target.value);
+    });
 
     async function loadStudents() {
       if (!$("#student-search")) return;

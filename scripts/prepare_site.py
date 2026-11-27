@@ -23,6 +23,7 @@ PAGE_FILES = (
 DATA_FILES = (
     "data/class-schedules.json",
     "data/class-calendars.json",
+    "data/class-links.json",
     "private-data/student-index.json",
     "private-data/staff-timetables.json",
 )

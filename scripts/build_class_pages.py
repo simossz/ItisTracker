@@ -83,9 +83,6 @@ def page_html(name, lessons, all_classes):
              "acceptedAnswer": {"@type": "Answer", "text": "Aule: " + ", ".join(rooms) + "." if rooms else "Le aule non sono ancora verificate."}},
         ],
     }
-    others = " ".join(
-        f'<a class="room-chip" href="/orario/{slugify(c)}/">{escape(c)}</a>' for c in all_classes[:40]
-    )
     return f'''<!doctype html>
 <html lang="it">
 <head>
@@ -134,8 +131,7 @@ def page_html(name, lessons, all_classes):
     <div class="class-content">
       {timetable_html(lessons)}
       <p class="class-meta">{len(lessons)} lezioni · {len(subjects)} materie · {len(rooms)} aule</p>
-      <h2>Altre classi dell'ITIS Parma</h2>
-      <div class="free-grid">{others}</div>
+      <p class="class-meta"><a href="/orario/">Scegli un'altra classe</a></p>
     </div>
   </main>
   <footer>
@@ -164,6 +160,11 @@ def build():
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(page_html(name, lessons, list(classes.keys())), encoding="utf-8")
         urls.append(f"{BASE}/orario/{slug}/")
+
+    links = {name: f"/orario/{slugify(name)}/" for name in classes}
+    (PROJECT_ROOT / "data" / "class-links.json").write_text(
+        json.dumps(links, ensure_ascii=False), encoding="utf-8"
+    )
 
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     priorities = [

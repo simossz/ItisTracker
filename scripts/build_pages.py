@@ -46,10 +46,6 @@ PAGES = [
         </aside>
         <div class="content" id="schedule-wrap"><div class="empty">Caricamento orario…</div></div>
       </div>
-    </section>
-    <section class="class-links">
-      <h2>Tutte le classi dell'ITIS Parma</h2>
-      <div class="free-grid">''' + CLASS_LINKS + '''</div>
     </section>''',
     },
     {
@@ -68,10 +64,6 @@ PAGES = [
         </aside>
         <div class="content" id="schedule-wrap"><div class="empty">Caricamento orario…</div></div>
       </div>
-    </section>
-    <section class="class-links">
-      <h2>Tutte le classi dell'ITIS Parma</h2>
-      <div class="free-grid">''' + CLASS_LINKS + '''</div>
     </section>''',
     },
     {

@@ -5,6 +5,7 @@ private-data/student-index.json
 data/class-calendars.json
 person-pages/
 class-pages/
+data/class-links.json
 
 # Build output
 _site/
