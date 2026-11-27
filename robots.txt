@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://itis.simocode.xyz/sitemap.xml
+Sitemap: https://itistracker.it/sitemap.xml

@@ -8,7 +8,7 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = PROJECT_ROOT / "class-pages"
-BASE = "https://itis.simocode.xyz"
+BASE = "https://itistracker.it"
 TODAY = date.today().isoformat()
 
 _ALL_CLASSES = json.loads((PROJECT_ROOT / "data" / "class-calendars.json").read_text(encoding="utf-8")).get("classes", {})
