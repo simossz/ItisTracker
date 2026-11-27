@@ -62,6 +62,9 @@ jobs:
       - name: Build static class timetable pages for search engines
         run: python scripts/build_class_pages.py
 
+      - name: Build compact web data
+        run: python scripts/build_web_data.py
+
       - name: Prepare minimal Pages artifact
         run: python scripts/prepare_site.py
 

@@ -21,8 +21,8 @@ PAGE_FILES = (
     "js/app.js",
 )
 DATA_FILES = (
-    "data/class-calendars.json",
-    "private-data/student-index.json",
+    "data/class-calendar-web.json",
+    "private-data/student-index-web.json",
     "private-data/staff-index.json",
     "private-data/staff-timetables.json",
 )

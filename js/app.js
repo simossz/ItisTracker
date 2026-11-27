@@ -197,7 +197,14 @@ const escapeHtml = (value) => String(value || "").replace(/[&<>"']/g, (ch) => ({
 
     async function ensureClassCalendars() {
       if (classCalendars) return classCalendars;
-      classCalendars = await fetchJson("/data/class-calendars.json");
+      const raw = await fetchJson("/data/class-calendar-web.json");
+      const classes = {};
+      Object.entries(raw.classes || {}).forEach(([name, lessons]) => {
+        classes[name] = {
+          lessons: lessons.map(([day, start, end, subject, room]) => ({ day, start, end, subject, room })),
+        };
+      });
+      classCalendars = { classes };
       return classCalendars;
     }
 
@@ -230,7 +237,10 @@ const escapeHtml = (value) => String(value || "").replace(/[&<>"']/g, (ch) => ({
       if (studentLoadPromise) return studentLoadPromise;
       studentLoadPromise = (async () => {
         try {
-          studentManifest = await fetchJson("/private-data/student-index.json");
+          const raw = await fetchJson("/private-data/student-index-web.json");
+          studentManifest = {
+            students: (raw.students || []).map(([name, schedule_class]) => ({ name, schedule_class })),
+          };
           $("#student-search").disabled = false;
           $("#student-results").innerHTML = '<div class="empty">Scrivi almeno 2 lettere per cercare.</div>';
         } catch (error) {
@@ -382,9 +392,10 @@ const escapeHtml = (value) => String(value || "").replace(/[&<>"']/g, (ch) => ({
       try {
         if (kind === "student") {
           if (!studentManifest) {
-            const response = await fetch("/private-data/student-index.json", { cache: "no-store" });
-            if (!response.ok) throw new Error();
-            studentManifest = await response.json();
+            const raw = await fetchJson("/private-data/student-index-web.json");
+            studentManifest = {
+              students: (raw.students || []).map(([name, schedule_class]) => ({ name, schedule_class })),
+            };
           }
           const student = studentManifest?.students?.[Number(key)];
           if (!student) throw new Error();
