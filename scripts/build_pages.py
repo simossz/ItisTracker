@@ -3,6 +3,8 @@ import pathlib
 
 repo = pathlib.Path(r"C:\Users\simon\AppData\Local\Temp\opencode\ItisTracker-github")
 
+BUILD_VERSION = str(int((repo / "js" / "app.js").stat().st_mtime)) + "-"+ str(int((repo / "css" / "style.css").stat().st_mtime))
+
 from build_class_pages import timetable_html
 
 
@@ -203,7 +205,7 @@ def head(page):
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/style.css?v={BUILD_VERSION}">
   <script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>
 {ld_extra}</head>
 <body data-page="{page["page"]}">'''
@@ -247,7 +249,7 @@ def shell(page):
     <span>Realizzato da <a href="https://github.com/simossz" target="_blank" rel="noopener noreferrer">Simone Zani</a></span>
     <span>Contatti: <a href="mailto:supporto@itistracker.it">supporto@itistracker.it</a></span>
   </footer>
-  <script src="/js/app.js" defer></script>
+  <script src="/js/app.js?v={BUILD_VERSION}" defer></script>
 </body>
 </html>
 '''
@@ -270,7 +272,7 @@ for page in PAGES:
   <meta http-equiv="refresh" content="0; url=/orario/">
   <link rel="canonical" href="https://itistracker.it/orario/">
   <meta name="robots" content="noindex">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/style.css?v={BUILD_VERSION}">
   <script>location.replace('/orario/');</script>
 </head>
 <body data-page="orario">

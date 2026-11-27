@@ -7,6 +7,8 @@ from pathlib import Path
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
+BUILD_VERSION = str(int((PROJECT_ROOT / "js" / "app.js").stat().st_mtime)) + "-"+ str(int((PROJECT_ROOT / "css" / "style.css").stat().st_mtime))
 OUTPUT = PROJECT_ROOT / "class-pages"
 BASE = "https://itistracker.it"
 TODAY = date.today().isoformat()
@@ -120,7 +122,7 @@ def page_html(name, lessons, all_classes):
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/style.css?v={BUILD_VERSION}">
   <script type="application/ld+json">{json.dumps(breadcrumb, ensure_ascii=False)}</script>
   <script type="application/ld+json">{json.dumps(faq, ensure_ascii=False)}</script>
 </head>
@@ -158,7 +160,7 @@ def page_html(name, lessons, all_classes):
     <span>Realizzato da <a href="https://github.com/simossz" target="_blank" rel="noopener noreferrer">Simone Zani</a></span>
     <span>Contatti: <a href="mailto:supporto@itistracker.it">supporto@itistracker.it</a></span>
   </footer>
-  <script src="/js/app.js" defer></script>
+  <script src="/js/app.js?v={BUILD_VERSION}" defer></script>
 </body>
 </html>
 '''
@@ -223,7 +225,7 @@ def build():
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/style.css?v={BUILD_VERSION}">
 </head>
 <body data-page="404">
   <header class="masthead">
