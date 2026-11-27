@@ -242,7 +242,7 @@ def shell(page):
   </main>
 
   <footer>
-    <span>Orari dell'<a href="https://itis.pr.it/" target="_blank" rel="noopener noreferrer">ITIS Leonardo da Vinci di Parma</a> · realizzato da <a href="https://github.com/simossz" target="_blank" rel="noopener noreferrer">Simone Zani</a> · <a href="mailto:support@itistracker.it">Segnala un problema</a></span>
+    <span>Realizzato da <a href="https://github.com/simossz" target="_blank" rel="noopener noreferrer">Simone Zani</a> · <a href="mailto:support@itistracker.it">supporto@itistracker.it</a></span>
   </footer>
   <script src="/js/app.js"></script>
 </body>

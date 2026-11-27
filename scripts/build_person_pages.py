@@ -18,6 +18,9 @@ def slugify(value, suffix=None):
     return text or "sconosciuto"
 
 
+SOCIAL = '''<a class="icon-button" href="https://github.com/simossz" target="_blank" rel="noopener noreferrer" aria-label="GitHub simossz" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .7a11.3 11.3 0 0 0-3.57 22c.57.1.78-.24.78-.54v-2.1c-3.18.69-3.85-1.35-3.85-1.35-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.67 1.24 3.32.95.1-.74.4-1.24.72-1.53-2.54-.29-5.21-1.27-5.21-5.65 0-1.25.44-2.27 1.17-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.12 1.17A10.9 10.9 0 0 1 12 6.78c.97 0 1.94.13 2.85.38 2.16-1.48 3.12-1.17 3.12-1.17.62 1.57.23 2.73.11 3.02.73.8 1.17 1.82 1.17 3.07 0 4.39-2.68 5.36-5.23 5.64.41.36.78 1.06.78 2.14v3.17c0 .3.21.65.79.54A11.3 11.3 0 0 0 12 .7Z"/></svg></a>
+      <a class="icon-button" href="https://instagram.com/21.simooo" target="_blank" rel="noopener noreferrer" aria-label="Instagram 21.simooo" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6Zm8.9 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg></a>'''
+
 DAYS = ["Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato"]
 HOURS = ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00"]
 
@@ -42,7 +45,10 @@ def shell(title, description, page, key, body):
         ("Studenti", "/studenti/", "studenti"),
         ("Docenti", "/docenti/", "docenti"),
     ]
-    links = "\n      ".join(f'<a href="{href}">{label}</a>' for label, href, _ in nav)
+    links = "\n      ".join(
+        f'<a href="{href}"' + (' aria-current="page"' if (label == "Studenti" and page == "student") or (label == "Docenti" and page == "teacher") else '') + f'>{label}</a>'
+        for label, href, _ in nav
+    )
     return f'''<!doctype html>
 <html lang="it">
 <head>
@@ -68,6 +74,7 @@ def shell(title, description, page, key, body):
       {links}
     </nav>
     <div class="header-tools">
+      {SOCIAL}
       <button class="icon-button" id="theme-toggle" type="button" aria-label="Attiva tema scuro" title="Tema">
         <svg class="theme-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"></svg>
       </button>
@@ -81,7 +88,7 @@ def shell(title, description, page, key, body):
     {body}
   </main>
   <footer>
-    <span>Orari dell'ITIS Leonardo da Vinci di Parma · <a href="/studenti/">Torna alla ricerca</a> · <a href="mailto:support@itistracker.it">Segnala un problema</a></span>
+    <span>Realizzato da <a href="https://github.com/simossz" target="_blank" rel="noopener noreferrer">Simone Zani</a> · <a href="/studenti/">Torna alla ricerca</a> · <a href="mailto:support@itistracker.it">supporto@itistracker.it</a></span>
   </footer>
   <script src="/js/app.js"></script>
 </body>
