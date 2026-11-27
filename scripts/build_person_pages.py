@@ -88,6 +88,9 @@ def shell(title, description, page, key, body):
       </button>
     </div>
   </header>
+  <div class="mobile-social" aria-label="Social">
+    {SOCIAL}
+  </div>
   <main id="main">
     <section class="page-head">
       <h1 id="person-name">{title}</h1>

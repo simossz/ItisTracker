@@ -142,6 +142,9 @@ def page_html(name, lessons, all_classes):
       </button>
     </div>
   </header>
+  <div class="mobile-social" aria-label="Social">
+    {SOCIAL}
+  </div>
   <main id="main">
     <section class="page-head">
       <nav class="breadcrumb" aria-label="Percorso"><a href="/orario/">Orario classi</a> › <span>Classe {escape(name)}</span></nav>
