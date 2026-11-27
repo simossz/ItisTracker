@@ -26,27 +26,6 @@
       scrollbar-width: thin;
       scrollbar-color: var(--ink) var(--soft);
     }
-    html.theme-changing,
-    html.theme-changing *,
-    html.theme-changing *::before,
-    html.theme-changing *::after {
-      transition-duration: .45s !important;
-      transition-timing-function: cubic-bezier(.22, 1, .36, 1) !important;
-    }
-    ::view-transition-old(root),
-    ::view-transition-new(root) {
-      animation-duration: .45s;
-      animation-timing-function: cubic-bezier(.22, 1, .36, 1);
-    }
-    ::view-transition-old(root) { animation-name: theme-out; }
-    ::view-transition-new(root) { animation-name: theme-in; }
-    @keyframes theme-out {
-      to { opacity: 0; }
-    }
-    @keyframes theme-in {
-      from { opacity: 0; filter: saturate(.9); }
-      to { opacity: 1; filter: saturate(1); }
-    }
     html::-webkit-scrollbar { width: 10px; height: 10px; }
     html::-webkit-scrollbar-track { background: var(--soft); }
     html::-webkit-scrollbar-thumb {
@@ -663,10 +642,6 @@
         scroll-behavior: auto !important;
         animation-duration: .01ms !important;
         transition-duration: .01ms !important;
-      }
-      ::view-transition-old(root),
-      ::view-transition-new(root) {
-        animation-duration: .01ms !important;
       }
     }
 

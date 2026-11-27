@@ -50,19 +50,7 @@ const escapeHtml = (value) => String(value || "").replace(/[&<>"']/g, (ch) => ({
         : '<svg class="theme-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 15.1A8.5 8.5 0 0 1 8.9 4a8.5 8.5 0 1 0 11.1 11.1Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>';
     }
     function setTheme(theme) {
-      document.documentElement.classList.add("theme-changing");
-
-      const update = () => applyTheme(theme);
-      if (document.startViewTransition && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        document.startViewTransition(update).finished.finally(() => {
-          document.documentElement.classList.remove("theme-changing");
-        });
-      } else {
-        update();
-        window.setTimeout(() => {
-          document.documentElement.classList.remove("theme-changing");
-        }, 450);
-      }
+      applyTheme(theme);
     }
     if ($("#theme-toggle")) {
       $("#theme-toggle").addEventListener("click", () => {
