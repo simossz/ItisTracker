@@ -11,6 +11,7 @@ ROOT_FILES = (
     "robots.txt",
     "sitemap.xml",
     "google6baad8fa7abc046f.html",
+    "404.html",
 )
 PAGE_FILES = (
     "orario/index.html",
@@ -29,9 +30,10 @@ DATA_DIRS = (
     "data/class-schedules",
     "private-data/staff-timetable-images",
 )
-PERSON_DIRS = (
+EXTRA_DIRS = (
     ("person-pages/studenti", "studenti"),
     ("person-pages/docenti", "docenti"),
+    ("class-pages/orario", "orario"),
 )
 PERSON_FILES = (
     ("person-pages/links.json", "person-pages/links.json"),
@@ -51,7 +53,7 @@ def prepare_site():
     for relative_path in DATA_DIRS:
         if not (PROJECT_ROOT / relative_path).is_dir():
             raise FileNotFoundError(f"Cartella richiesta per il sito non trovata: {relative_path}")
-    for relative_path, _ in (*PERSON_DIRS, *PERSON_FILES):
+    for relative_path, _ in (*EXTRA_DIRS, *PERSON_FILES):
         if not (PROJECT_ROOT / relative_path).exists():
             raise FileNotFoundError(f"File personale richiesto non trovato: {relative_path}")
 
@@ -67,7 +69,7 @@ def prepare_site():
         destination = SITE_DIR / relative_path
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copytree(PROJECT_ROOT / relative_path, destination)
-    for relative_path, destination_path in PERSON_DIRS:
+    for relative_path, destination_path in EXTRA_DIRS:
         destination = SITE_DIR / destination_path
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copytree(PROJECT_ROOT / relative_path, destination, dirs_exist_ok=True)

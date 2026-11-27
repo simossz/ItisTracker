@@ -3,6 +3,20 @@ import pathlib
 
 repo = pathlib.Path(r"C:\Users\simon\AppData\Local\Temp\opencode\ItisTracker-github")
 
+
+def slugify(value):
+    import re
+    import unicodedata
+    text = unicodedata.normalize("NFKD", str(value or ""))
+    text = "".join(ch for ch in text if not unicodedata.combining(ch)).lower()
+    return re.sub(r"[^a-z0-9]+", "-", text).strip("-") or "classe"
+
+
+_classes = json.loads((repo / "data" / "class-calendars.json").read_text(encoding="utf-8")).get("classes", {})
+CLASS_LINKS = " ".join(
+    f'<a class="room-chip" href="/orario/{slugify(name)}/">{name}</a>' for name in _classes
+)
+
 BRAND_SVG = '''<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <rect x="4" y="4" width="16" height="16" rx="2" stroke-width="1.8"/>
           <path d="M4 12h16M12 4v16" stroke-width="1.8"/>
@@ -32,6 +46,10 @@ PAGES = [
         </aside>
         <div class="content" id="schedule-wrap"><div class="empty">Caricamento orario…</div></div>
       </div>
+    </section>
+    <section class="class-links">
+      <h2>Tutte le classi dell'ITIS Parma</h2>
+      <div class="free-grid">''' + CLASS_LINKS + '''</div>
     </section>''',
     },
     {
@@ -50,6 +68,10 @@ PAGES = [
         </aside>
         <div class="content" id="schedule-wrap"><div class="empty">Caricamento orario…</div></div>
       </div>
+    </section>
+    <section class="class-links">
+      <h2>Tutte le classi dell'ITIS Parma</h2>
+      <div class="free-grid">''' + CLASS_LINKS + '''</div>
     </section>''',
     },
     {
@@ -140,7 +162,26 @@ def head(page):
             "name": "ITIS Leonardo da Vinci",
             "address": {"@type": "PostalAddress", "addressLocality": "Parma", "addressCountry": "IT"},
         },
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://itis.simocode.xyz/studenti/?q={search_term_string}",
+            "query-input": "required name=search_term_string",
+        },
     }
+    ld_extra = ""
+    if page["page"] == "orario":
+        faq = {
+            "@context": "https://schema.org", "@type": "FAQPage",
+            "mainEntity": [
+                {"@type": "Question", "name": "Come vedo l'orario di una classe dell'ITIS di Parma?",
+                 "acceptedAnswer": {"@type": "Answer", "text": "Apri ItisTracker, scegli la classe dal menu e visualizza l'orario settimanale con materie, aule e orari."}},
+                {"@type": "Question", "name": "Posso cercare uno studente o un docente dell'ITIS Parma?",
+                 "acceptedAnswer": {"@type": "Answer", "text": "Sì: usa la pagina Studenti o Docenti, scrivi almeno due lettere e seleziona il nome per vedere l'orario."}},
+                {"@type": "Question", "name": "Dove si trova l'ITIS Leonardo da Vinci di Parma?",
+                 "acceptedAnswer": {"@type": "Answer", "text": "L'ITIS Leonardo da Vinci si trova a Parma. Il sito ufficiale è itis.pr.it."}},
+            ],
+        }
+        ld_extra = f'  <script type="application/ld+json">{json.dumps(faq, ensure_ascii=False)}</script>\n'
     return f'''<!doctype html>
 <html lang="it">
 <head>
@@ -149,6 +190,7 @@ def head(page):
   <meta name="theme-color" content="#f5f4ef">
   <title>{page["title"]}</title>
   <meta name="description" content="{page["description"]}">
+  <meta name="robots" content="index, follow">
   <meta name="keywords" content="ItisTracker, ITIS Parma, ITIS Leonardo da Vinci Parma, orari scolastici Parma, orario classi, studenti, docenti">
   <link rel="canonical" href="{page["canonical"]}">
   <meta property="og:type" content="website">
@@ -166,7 +208,7 @@ def head(page):
   <link rel="icon" href="{FAVICON}">
   <link rel="stylesheet" href="/css/style.css">
   <script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>
-</head>
+{ld_extra}</head>
 <body data-page="{page["page"]}">'''
 
 

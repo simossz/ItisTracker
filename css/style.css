@@ -673,6 +673,18 @@
   .page-head p { margin: 0; color: var(--muted); max-width: 68ch; }
   .person-link { margin-left: 12px; font-size: 12px; color: var(--ink); text-underline-offset: 4px; }
 
+  .breadcrumb { color: var(--muted); font-size: 12px; margin-bottom: 14px; }
+  .breadcrumb a { color: var(--muted); text-underline-offset: 3px; }
+  .seo-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .seo-table th, .seo-table td { border: 1px solid var(--line); padding: 8px; text-align: left; vertical-align: top; }
+  .seo-table thead th { background: var(--soft); font-weight: 600; }
+  .seo-table tbody th { color: var(--muted); font-weight: 500; white-space: nowrap; }
+  .seo-table small { color: var(--muted); }
+  .stat { margin: 0 0 14px; }
+  .stat strong { display: block; font-family: Newsreader, Georgia, serif; font-size: 28px; line-height: 1; }
+  .muted-small { color: var(--muted); font-size: 12px; line-height: 1.6; }
+  .side h3 { margin: 20px 0 6px; font-size: 13px; }
+
   .free-summary { margin: 0 0 18px; font-size: 15px; }
   .free-summary strong { font-family: Newsreader, Georgia, serif; font-size: 40px; margin-right: 8px; }
   .free-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 0; }
