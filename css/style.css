@@ -684,6 +684,9 @@
   .stat strong { display: block; font-family: Newsreader, Georgia, serif; font-size: 28px; line-height: 1; }
   .muted-small { color: var(--muted); font-size: 12px; line-height: 1.6; }
   .side h3 { margin: 20px 0 6px; font-size: 13px; }
+  .class-content { min-width: 0; }
+  .class-meta { color: var(--muted); font-size: 12px; margin: 14px 0 30px; }
+  .class-content h2 { font-family: Newsreader, Georgia, serif; font-size: 20px; margin: 0 0 12px; }
 
   .free-summary { margin: 0 0 18px; font-size: 15px; }
   .free-summary strong { font-family: Newsreader, Georgia, serif; font-size: 40px; margin-right: 8px; }

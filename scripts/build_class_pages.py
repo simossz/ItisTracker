@@ -33,13 +33,12 @@ def nav():
 
 
 def timetable_html(lessons):
-    html = '<div class="calendar-scroll"><table class="seo-table"><thead><tr><th>Ora</th>'
+    html = '<div class="calendar-scroll"><div class="calendar-grid"><div class="calendar-head"></div>'
     for day in DAYS:
-        html += f"<th>{day[:3]}</th>"
-    html += "</tr></thead><tbody>"
+        html += f'<div class="calendar-head">{day[:3]}</div>'
     for hour in HOURS:
         start = int(hour.split(":")[0])
-        html += f'<tr><th scope="row">{hour}</th>'
+        html += f'<div class="time-label">{hour}</div>'
         for day in DAYS:
             lesson = None
             for item in lessons:
@@ -52,12 +51,12 @@ def timetable_html(lessons):
             if lesson:
                 subject = escape(lesson.get("subject") or lesson.get("text") or "Lezione")
                 room = escape(lesson.get("room"))
-                extra = f" · Aula {room}" if room else ""
-                html += f'<td><strong>{subject}</strong><br><small>{lesson.get("start","")}–{lesson.get("end","")}{extra}</small></td>'
+                detail = f"{subject} · {room} · {lesson.get('start','')}–{lesson.get('end','')}"
+                secondary = room
+                html += f'<div class="calendar-cell"><div class="lesson" tabindex="0" data-detail="{escape(detail)}"><strong>{subject}</strong><small>{secondary}</small></div></div>'
             else:
-                html += "<td>—</td>"
-        html += "</tr>"
-    return html + "</tbody></table></div>"
+                html += '<div class="calendar-cell empty-cell"><span aria-label="Ora vuota">—</span></div>'
+    return html + "</div></div>"
 
 
 def page_html(name, lessons, all_classes):
@@ -132,23 +131,11 @@ def page_html(name, lessons, all_classes):
       <h1>Orario classe {escape(name)}</h1>
       <p>Orario settimanale della classe {escape(name)} dell'ITIS Leonardo da Vinci di Parma. {len(lessons)} lezioni, {len(subjects)} materie.</p>
     </section>
-    <div class="workspace">
-      <aside class="side">
-        <h2>Dati della classe</h2>
-        <div class="stat"><strong>{len(lessons)}</strong> lezioni a settimana</div>
-        <div class="stat"><strong>{len(subjects)}</strong> materie</div>
-        <div class="stat"><strong>{len(rooms)}</strong> aule</div>
-        <h3>Materie</h3>
-        <p class="muted-small">{escape(", ".join(subjects))}</p>
-        <h3>Aule</h3>
-        <p class="muted-small">{escape(", ".join(rooms)) if rooms else "Da verificare"}</p>
-        <a class="room-button" href="/orario/">Tutte le classi</a>
-      </aside>
-      <div class="content">
-        {timetable_html(lessons)}
-        <h2>Altre classi dell'ITIS Parma</h2>
-        <div class="free-grid">{others}</div>
-      </div>
+    <div class="class-content">
+      {timetable_html(lessons)}
+      <p class="class-meta">{len(lessons)} lezioni · {len(subjects)} materie · {len(rooms)} aule</p>
+      <h2>Altre classi dell'ITIS Parma</h2>
+      <div class="free-grid">{others}</div>
     </div>
   </main>
   <footer>
